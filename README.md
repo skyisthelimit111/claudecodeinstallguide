@@ -1,5 +1,5 @@
-# Claude Code Installation & Mastery Guide for Beginners
-### 零基础 Claude Code 完全安装指南
+# Ultimate Zero-to-Hero Claude Code Installation & Mastery Guide
+### 从新手到高手 Claude Code 安装与精通终极指南
 
 ---
 
