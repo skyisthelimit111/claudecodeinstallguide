@@ -10,7 +10,7 @@ A bilingual (Chinese / English) interactive HTML guide that walks complete begin
 
 ### Live Demo
 
-🌐 Click here to view the live website!(https://skyisthelimit111.github.io/claudecodeinstallguide/
+[🌐 Click here to view the live website!](https://skyisthelimit111.github.io/claudecodeinstallguide/)
 
 ### What's Inside
 
@@ -57,7 +57,7 @@ image_github4.png           ← Private repository warning
 ### How to View Locally
 
 1. Download / clone this repository
-2. Open https://skyisthelimit111.github.io/claudecodeinstallguide/ in any modern browser
+2. Open `claude_code_guide_v2.html` in any modern browser
 3. No server or build step needed
 
 ### License
@@ -72,7 +72,7 @@ For personal and educational use.
 
 ### 在线预览
 
-点击此处访问在线完整教程！](https://skyisthelimit111.github.io/claudecodeinstallguide/
+[点击此处访问在线完整教程！](https://skyisthelimit111.github.io/claudecodeinstallguide/)
 
 ### 内容概览
 
@@ -119,7 +119,7 @@ image_github4.png           ← Private 仓库状态警示
 ### 本地查看方法
 
 1. 下载或克隆本仓库
-2. 用任意现代浏览器打开 https://skyisthelimit111.github.io/claudecodeinstallguide/
+2. 用任意现代浏览器打开 `claude_code_guide_v2.html`
 3. 无需服务器，无需构建步骤
 
 ### 许可
