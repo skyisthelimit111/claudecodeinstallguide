@@ -1,1 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code Beginner's Guide | 零基础安装指南</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e67e22;
+            --light-bg: #f8f9fa;
+            --dark-bg: #1a252f;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--primary);
+            line-height: 1.6;
+        }
 
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark-bg) 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            color: #bdc3c7;
+        }
+
+        /* Call to Action Buttons */
+        .cta-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--primary);
+            color: white;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>🏗️ Claude Code Mastery Guide</h1>
+        <p>
+            The ultimate zero-to-hero tutorial designed for non-technical users, general managers, and absolute beginners. Build your software like a property developer!
+            <br><br>
+            专为非技术背景、跨行小白量身打造的“大白话”教程。用“盖房子”的思维，教你零基础掌握本地 AI 编程神器！
+        </p>
+        
+        <div class="cta-container">
+            <a href="claude_code_guide_v2.html#en-version" class="btn btn-primary">🇺🇸 Read the Guide (English)</a>
+            
+            <a href="claude_code_guide_v2.html#zh-version" class="btn btn-outline">🇨🇳 阅读完整教程 (中文版)</a>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🚫</div>
+            <div class="feature-title">No Jargon / 拒绝晦涩专业词</div>
+            <p>We replaced complex coding terms with a simple "Construction & Real Estate" metaphor. Learn Git and Node.js by thinking about foundations and blueprints.<br><br>将复杂的编程词汇替换为“盖房子、找包工头”的比喻，一看就懂。</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📸</div>
+            <div class="feature-title">Visual Steps / 全程图文实操</div>
+            <p>Step-by-step screenshots with clear markers. We show you exactly where to click and what to type to avoid common beginner traps.<br><br>每一步都有精准截图，手把手教你如何避开新手容易踩的系统报错大坑。</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <div class="feature-title">AI Tool Matrix / AI 工具选型</div>
+            <p>Don't know when to use Claude vs ChatGPT vs Gemini? We provide a clear breakdown of which AI to "hire" for your specific tasks.<br><br>帮你梳理 Claude, Gemini, ChatGPT 和 DeepSeek 的使用场景，选对工具干对活。</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Open Source Project hosted on <a href="https://github.com/skyisthelimit111/claudecodeinstallguide" target="_blank">GitHub</a>.</p>
+        <p>Designed for complete beginners to take their first step into the world of AI-assisted local development.</p>
+    </footer>
+
+</body>
+</html>
