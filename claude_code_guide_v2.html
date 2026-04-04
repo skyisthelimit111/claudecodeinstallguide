@@ -60,6 +60,50 @@
         /* Screenshot placeholder for missing images */
         .img-placeholder { background: #eef2f5; border: 2px dashed #b2bec3; border-radius: 8px; padding: 40px 20px; text-align: center; color: #636e72; font-size: 0.95em; }
         .img-placeholder strong { display: block; font-size: 1.1em; margin-bottom: 8px; color: #2d3436; }
+
+        /* ── Ship Wheel Navigation (mobile only) ───────────────── */
+        @media (max-width: 768px) {
+            #wheel-nav {
+                position: fixed; right: 6px; top: 50%;
+                transform: translateY(-50%);
+                z-index: 600;
+                display: flex; flex-direction: column; align-items: center; gap: 5px;
+            }
+            #wheel-lang { display: flex; gap: 4px; }
+            .wbtn {
+                padding: 4px 9px; background: rgba(44,62,80,0.88);
+                color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.2);
+                border-radius: 10px; font-size: 0.68em; font-weight: bold;
+                cursor: pointer; transition: all 0.2s;
+            }
+            .wbtn.active { background: #e67e22; color: #fff; border-color: #e67e22; }
+            #wheel-svg {
+                width: 76px; height: 76px; cursor: grab;
+                touch-action: none; will-change: transform;
+                filter: drop-shadow(0 3px 10px rgba(0,0,0,0.4));
+                transition: transform 0.18s cubic-bezier(.25,.8,.25,1);
+            }
+            #wheel-hint { font-size: 0.58em; color: rgba(44,62,80,0.5); letter-spacing: 0.5px; text-align: center; }
+            #wheel-label-box {
+                position: fixed; right: 90px; top: 50%;
+                transform: translateY(-50%);
+                background: rgba(44,62,80,0.92); color: #fff;
+                padding: 7px 12px; border-radius: 8px;
+                font-size: 0.8em; font-weight: bold; white-space: nowrap;
+                pointer-events: none; z-index: 600;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                max-width: 170px; transition: opacity 0.2s;
+            }
+            #wheel-label-box::after {
+                content: ''; position: absolute; right: -7px; top: 50%;
+                transform: translateY(-50%);
+                border: 7px solid transparent;
+                border-left-color: rgba(44,62,80,0.92); border-right: none;
+            }
+        }
+        @media (min-width: 769px) {
+            #wheel-nav, #wheel-label-box { display: none !important; }
+        }
     </style>
 </head>
 <body>
@@ -647,6 +691,154 @@
 
     </div>
 </div>
+
+<!-- ── Ship Wheel Navigation ─────────────────────────────────── -->
+<div id="wheel-label-box">1 🛠️ Installation</div>
+
+<div id="wheel-nav">
+    <!-- Language toggle -->
+    <div id="wheel-lang">
+        <button class="wbtn active" id="wbtn-en" onclick="wheelLang('en')">🇺🇸 EN</button>
+        <button class="wbtn"        id="wbtn-zh" onclick="wheelLang('zh')">🇨🇳 中</button>
+    </div>
+
+    <!-- Ship wheel SVG -->
+    <svg id="wheel-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <!-- Dark background disc -->
+        <circle cx="50" cy="50" r="48" fill="rgba(44,62,80,0.92)" stroke="#e67e22" stroke-width="2.5"/>
+        <!-- Inner decorative ring -->
+        <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+        <!-- 6 spokes -->
+        <line x1="50" y1="50" x2="50"  y2="12"  stroke="#ecf0f1" stroke-width="3" stroke-linecap="round"/>
+        <line x1="50" y1="50" x2="83"  y2="31"  stroke="#ecf0f1" stroke-width="3" stroke-linecap="round"/>
+        <line x1="50" y1="50" x2="83"  y2="69"  stroke="#ecf0f1" stroke-width="3" stroke-linecap="round"/>
+        <line x1="50" y1="50" x2="50"  y2="88"  stroke="#ecf0f1" stroke-width="3" stroke-linecap="round"/>
+        <line x1="50" y1="50" x2="17"  y2="69"  stroke="#ecf0f1" stroke-width="3" stroke-linecap="round"/>
+        <line x1="50" y1="50" x2="17"  y2="31"  stroke="#ecf0f1" stroke-width="3" stroke-linecap="round"/>
+        <!-- 6 handles (orange pegs at spoke ends) -->
+        <circle cx="50" cy="8"  r="6" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="85" cy="28" r="6" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="85" cy="72" r="6" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="50" cy="92" r="6" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="15" cy="72" r="6" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="15" cy="28" r="6" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
+        <!-- Centre hub -->
+        <circle cx="50" cy="50" r="13" fill="#e67e22"/>
+        <circle cx="50" cy="50" r="8"  fill="#2c3e50"/>
+        <!-- Chapter number in hub -->
+        <text id="wheel-num" x="50" y="54" text-anchor="middle"
+              fill="#fff" font-size="9" font-weight="bold" font-family="sans-serif">1</text>
+    </svg>
+
+    <div id="wheel-hint">旋转导航</div>
+</div>
+
+<script>
+(function () {
+    var CHAPTERS = {
+        en: [
+            { id: 'en-install',  label: '1 🛠️ Installation' },
+            { id: 'en-errors',   label: '2 ⚠️ Troubleshooting' },
+            { id: 'en-firstuse', label: '3 🎉 First-time Setup' },
+            { id: 'en-mindset',  label: '4 🧠 Core Mindset' },
+            { id: 'en-ai-tools', label: '5 🤖 AI Tools' },
+            { id: 'en-github',   label: '6 🌐 Publish & Share' }
+        ],
+        zh: [
+            { id: 'zh-install',  label: '1 🛠️ 核心安装' },
+            { id: 'zh-errors',   label: '2 ⚠️ 报错急救' },
+            { id: 'zh-firstuse', label: '3 🎉 首次配置' },
+            { id: 'zh-mindset',  label: '4 🧠 核心心法' },
+            { id: 'zh-ai-tools', label: '5 🤖 工具选型' },
+            { id: 'zh-github',   label: '6 🌐 发布分享' }
+        ]
+    };
+
+    var lang        = 'en';
+    var curIdx      = 0;
+    var wheelAngle  = 0;
+    var dragging    = false;
+    var startTouchAngle = 0;
+    var startWheelAngle = 0;
+
+    var svg       = document.getElementById('wheel-svg');
+    var numEl     = document.getElementById('wheel-num');
+    var labelBox  = document.getElementById('wheel-label-box');
+
+    /* ── helpers ── */
+    function touchAngle(touch) {
+        var r  = svg.getBoundingClientRect();
+        var cx = r.left + r.width  / 2;
+        var cy = r.top  + r.height / 2;
+        return Math.atan2(touch.clientY - cy, touch.clientX - cx) * 180 / Math.PI;
+    }
+
+    function goToChapter(idx, smooth) {
+        var chapters = CHAPTERS[lang];
+        idx = ((idx % 6) + 6) % 6;
+        curIdx = idx;
+        numEl.textContent    = idx + 1;
+        labelBox.textContent = chapters[idx].label;
+        var el = document.getElementById(chapters[idx].id);
+        if (el) el.scrollIntoView({ behavior: smooth ? 'smooth' : 'instant', block: 'start' });
+    }
+
+    function snapWheel() {
+        var snapped = Math.round(wheelAngle / 60) * 60;
+        wheelAngle  = snapped;
+        svg.style.transform = 'rotate(' + snapped + 'deg)';
+        var idx = (((- snapped / 60) % 6) + 6) % 6;
+        goToChapter(idx, true);
+    }
+
+    /* ── touch events ── */
+    svg.addEventListener('touchstart', function (e) {
+        e.preventDefault();
+        dragging        = true;
+        svg.style.transition = 'none';
+        startTouchAngle = touchAngle(e.touches[0]);
+        startWheelAngle = wheelAngle;
+    }, { passive: false });
+
+    svg.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+        if (!dragging) return;
+        var delta   = touchAngle(e.touches[0]) - startTouchAngle;
+        wheelAngle  = startWheelAngle + delta;
+        svg.style.transform = 'rotate(' + wheelAngle + 'deg)';
+
+        /* update chapter label while dragging */
+        var idx = (((- Math.round(wheelAngle / 60)) % 6) + 6) % 6;
+        if (idx !== curIdx) {
+            curIdx = idx;
+            numEl.textContent    = idx + 1;
+            labelBox.textContent = CHAPTERS[lang][idx].label;
+            /* scroll content as wheel turns */
+            var el = document.getElementById(CHAPTERS[lang][idx].id);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }, { passive: false });
+
+    svg.addEventListener('touchend', function () {
+        dragging = false;
+        svg.style.transition = 'transform 0.18s cubic-bezier(.25,.8,.25,1)';
+        snapWheel();
+    });
+
+    /* ── language switch ── */
+    window.wheelLang = function (l) {
+        lang = l;
+        document.getElementById('wbtn-en').className = l === 'en' ? 'wbtn active' : 'wbtn';
+        document.getElementById('wbtn-zh').className = l === 'zh' ? 'wbtn active' : 'wbtn';
+        wheelAngle = 0;
+        svg.style.transform = 'rotate(0deg)';
+        goToChapter(0, true);
+    };
+
+    /* init */
+    goToChapter(0, false);
+}());
+</script>
 
 </body>
 </html>
