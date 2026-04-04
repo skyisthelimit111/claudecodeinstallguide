@@ -67,7 +67,12 @@
                 position: fixed; right: 6px; top: 50%;
                 transform: translateY(-50%);
                 z-index: 600;
-                display: flex; flex-direction: column; align-items: center; gap: 5px;
+                display: flex; flex-direction: column; align-items: center; gap: 4px;
+            }
+            #wheel-drag-handle {
+                font-size: 0.75em; color: rgba(44,62,80,0.45);
+                letter-spacing: 3px; cursor: grab; padding: 2px 8px;
+                user-select: none; touch-action: none;
             }
             #wheel-lang { display: flex; gap: 4px; }
             .wbtn {
@@ -78,27 +83,33 @@
             }
             .wbtn.active { background: #e67e22; color: #fff; border-color: #e67e22; }
             #wheel-svg {
-                width: 76px; height: 76px; cursor: grab;
+                width: 82px; height: 82px; cursor: grab;
                 touch-action: none; will-change: transform;
-                filter: drop-shadow(0 3px 10px rgba(0,0,0,0.4));
-                transition: transform 0.18s cubic-bezier(.25,.8,.25,1);
+                filter: drop-shadow(0 3px 12px rgba(0,0,0,0.45));
+                transition: transform 0.2s cubic-bezier(.25,.8,.25,1);
             }
-            #wheel-hint { font-size: 0.58em; color: rgba(44,62,80,0.5); letter-spacing: 0.5px; text-align: center; }
+            #wheel-hint-dir {
+                font-size: 0.63em; color: #e67e22; font-weight: bold;
+                text-align: center; min-height: 15px; letter-spacing: 0.3px;
+            }
+            #wheel-hint { font-size: 0.55em; color: rgba(44,62,80,0.4); letter-spacing: 0.5px; text-align: center; }
             #wheel-label-box {
-                position: fixed; right: 90px; top: 50%;
+                position: fixed; right: 97px; top: 50%;
                 transform: translateY(-50%);
-                background: rgba(44,62,80,0.92); color: #fff;
-                padding: 7px 12px; border-radius: 8px;
-                font-size: 0.8em; font-weight: bold; white-space: nowrap;
+                background: rgba(44,62,80,0.93); color: #fff;
+                padding: 8px 13px; border-radius: 9px;
+                font-size: 0.82em; font-weight: bold; white-space: nowrap;
                 pointer-events: none; z-index: 600;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-                max-width: 170px; transition: opacity 0.2s;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+                max-width: 175px;
+                opacity: 0; transition: opacity 0.22s;
             }
+            #wheel-label-box.visible { opacity: 1; }
             #wheel-label-box::after {
                 content: ''; position: absolute; right: -7px; top: 50%;
                 transform: translateY(-50%);
                 border: 7px solid transparent;
-                border-left-color: rgba(44,62,80,0.92); border-right: none;
+                border-left-color: rgba(44,62,80,0.93); border-right: none;
             }
         }
         @media (min-width: 769px) {
@@ -693,152 +704,197 @@
 </div>
 
 <!-- ── Ship Wheel Navigation ─────────────────────────────────── -->
-<div id="wheel-label-box">1 🛠️ Installation</div>
+<div id="wheel-label-box"></div>
 
 <div id="wheel-nav">
-    <!-- Language toggle -->
+    <div id="wheel-drag-handle" title="Hold to move">⠿⠿⠿</div>
     <div id="wheel-lang">
         <button class="wbtn active" id="wbtn-en" onclick="wheelLang('en')">🇺🇸 EN</button>
         <button class="wbtn"        id="wbtn-zh" onclick="wheelLang('zh')">🇨🇳 中</button>
     </div>
-
-    <!-- Ship wheel SVG -->
     <svg id="wheel-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <!-- Dark background disc -->
-        <circle cx="50" cy="50" r="48" fill="rgba(44,62,80,0.92)" stroke="#e67e22" stroke-width="2.5"/>
-        <!-- Inner decorative ring -->
-        <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
-        <!-- 6 spokes -->
-        <line x1="50" y1="50" x2="50"  y2="12"  stroke="#ecf0f1" stroke-width="3" stroke-linecap="round"/>
-        <line x1="50" y1="50" x2="83"  y2="31"  stroke="#ecf0f1" stroke-width="3" stroke-linecap="round"/>
-        <line x1="50" y1="50" x2="83"  y2="69"  stroke="#ecf0f1" stroke-width="3" stroke-linecap="round"/>
-        <line x1="50" y1="50" x2="50"  y2="88"  stroke="#ecf0f1" stroke-width="3" stroke-linecap="round"/>
-        <line x1="50" y1="50" x2="17"  y2="69"  stroke="#ecf0f1" stroke-width="3" stroke-linecap="round"/>
-        <line x1="50" y1="50" x2="17"  y2="31"  stroke="#ecf0f1" stroke-width="3" stroke-linecap="round"/>
-        <!-- 6 handles (orange pegs at spoke ends) -->
-        <circle cx="50" cy="8"  r="6" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
-        <circle cx="85" cy="28" r="6" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
-        <circle cx="85" cy="72" r="6" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
-        <circle cx="50" cy="92" r="6" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
-        <circle cx="15" cy="72" r="6" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
-        <circle cx="15" cy="28" r="6" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
-        <!-- Centre hub -->
+        <circle cx="50" cy="50" r="48" fill="rgba(44,62,80,0.93)" stroke="#e67e22" stroke-width="2.5"/>
+        <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+        <line x1="50" y1="50" x2="50"  y2="14"  stroke="#ecf0f1" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="50" y1="50" x2="83"  y2="32"  stroke="#ecf0f1" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="50" y1="50" x2="83"  y2="68"  stroke="#ecf0f1" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="50" y1="50" x2="50"  y2="86"  stroke="#ecf0f1" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="50" y1="50" x2="17"  y2="68"  stroke="#ecf0f1" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="50" y1="50" x2="17"  y2="32"  stroke="#ecf0f1" stroke-width="2.8" stroke-linecap="round"/>
+        <circle cx="50" cy="8"  r="7" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
+        <text   x="50"  y="11" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="bold" font-family="sans-serif">1</text>
+        <circle cx="85" cy="28" r="7" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
+        <text   x="85"  y="31" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="bold" font-family="sans-serif">2</text>
+        <circle cx="85" cy="72" r="7" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
+        <text   x="85"  y="75" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="bold" font-family="sans-serif">3</text>
+        <circle cx="50" cy="92" r="7" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
+        <text   x="50"  y="95" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="bold" font-family="sans-serif">4</text>
+        <circle cx="15" cy="72" r="7" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
+        <text   x="15"  y="75" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="bold" font-family="sans-serif">5</text>
+        <circle cx="15" cy="28" r="7" fill="#e67e22" stroke="#fff" stroke-width="1.5"/>
+        <text   x="15"  y="31" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="bold" font-family="sans-serif">6</text>
+        <polygon points="50,1 46,10 54,10" fill="#fff" opacity="0.9"/>
         <circle cx="50" cy="50" r="13" fill="#e67e22"/>
         <circle cx="50" cy="50" r="8"  fill="#2c3e50"/>
-        <!-- Chapter number in hub -->
         <text id="wheel-num" x="50" y="54" text-anchor="middle"
-              fill="#fff" font-size="9" font-weight="bold" font-family="sans-serif">1</text>
+              fill="#fff" font-size="9.5" font-weight="bold" font-family="sans-serif">1</text>
     </svg>
-
+    <div id="wheel-hint-dir"></div>
     <div id="wheel-hint">旋转导航</div>
 </div>
 
 <script>
-(function () {
-    var CHAPTERS = {
-        en: [
-            { id: 'en-install',  label: '1 🛠️ Installation' },
-            { id: 'en-errors',   label: '2 ⚠️ Troubleshooting' },
-            { id: 'en-firstuse', label: '3 🎉 First-time Setup' },
-            { id: 'en-mindset',  label: '4 🧠 Core Mindset' },
-            { id: 'en-ai-tools', label: '5 🤖 AI Tools' },
-            { id: 'en-github',   label: '6 🌐 Publish & Share' }
-        ],
-        zh: [
-            { id: 'zh-install',  label: '1 🛠️ 核心安装' },
-            { id: 'zh-errors',   label: '2 ⚠️ 报错急救' },
-            { id: 'zh-firstuse', label: '3 🎉 首次配置' },
-            { id: 'zh-mindset',  label: '4 🧠 核心心法' },
-            { id: 'zh-ai-tools', label: '5 🤖 工具选型' },
-            { id: 'zh-github',   label: '6 🌐 发布分享' }
-        ]
-    };
+(function(){
+var CHAPTERS={
+  en:[
+    {id:'en-install',  label:'1 🛠️ Installation'},
+    {id:'en-errors',   label:'2 ⚠️ Troubleshooting'},
+    {id:'en-firstuse', label:'3 🎉 First-time Setup'},
+    {id:'en-mindset',  label:'4 🧠 Core Mindset'},
+    {id:'en-ai-tools', label:'5 🤖 AI Tools'},
+    {id:'en-github',   label:'6 🌐 Publish & Share'}
+  ],
+  zh:[
+    {id:'zh-install',  label:'1 🛠️ 核心安装'},
+    {id:'zh-errors',   label:'2 ⚠️ 报错急救'},
+    {id:'zh-firstuse', label:'3 🎉 首次配置'},
+    {id:'zh-mindset',  label:'4 🧠 核心心法'},
+    {id:'zh-ai-tools', label:'5 🤖 工具选型'},
+    {id:'zh-github',   label:'6 🌐 发布分享'}
+  ]
+};
+var lang='en',curIdx=0,wheelAngle=0,rotating=false;
+var startTA=0,startWA=0,prevAngle=0,hideTimer=null;
+var svg=document.getElementById('wheel-svg');
+var numEl=document.getElementById('wheel-num');
+var labelBox=document.getElementById('wheel-label-box');
+var hintDir=document.getElementById('wheel-hint-dir');
+var nav=document.getElementById('wheel-nav');
+var actx=null;
 
-    var lang        = 'en';
-    var curIdx      = 0;
-    var wheelAngle  = 0;
-    var dragging    = false;
-    var startTouchAngle = 0;
-    var startWheelAngle = 0;
+function click(){
+  try{
+    if(!actx) actx=new(window.AudioContext||window.webkitAudioContext)();
+    var len=Math.floor(actx.sampleRate*0.055);
+    var buf=actx.createBuffer(1,len,actx.sampleRate);
+    var d=buf.getChannelData(0);
+    for(var i=0;i<len;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/len,5)*0.45;
+    var src=actx.createBufferSource(); src.buffer=buf;
+    var g=actx.createGain(); g.gain.value=0.4;
+    src.connect(g); g.connect(actx.destination); src.start();
+  }catch(e){}
+}
 
-    var svg       = document.getElementById('wheel-svg');
-    var numEl     = document.getElementById('wheel-num');
-    var labelBox  = document.getElementById('wheel-label-box');
+function go(idx,smooth){
+  var chs=CHAPTERS[lang]; idx=((idx%6)+6)%6;
+  if(idx!==curIdx) click();
+  curIdx=idx; numEl.textContent=idx+1;
+  labelBox.textContent=chs[idx].label;
+  var el=document.getElementById(chs[idx].id);
+  if(el) el.scrollIntoView({behavior:smooth?'smooth':'instant',block:'start'});
+}
 
-    /* ── helpers ── */
-    function touchAngle(touch) {
-        var r  = svg.getBoundingClientRect();
-        var cx = r.left + r.width  / 2;
-        var cy = r.top  + r.height / 2;
-        return Math.atan2(touch.clientY - cy, touch.clientX - cx) * 180 / Math.PI;
-    }
+function setAngle(a,animate){
+  svg.style.transition=animate?'transform 0.2s cubic-bezier(.25,.8,.25,1)':'none';
+  wheelAngle=a; svg.style.transform='rotate('+a+'deg)';
+}
 
-    function goToChapter(idx, smooth) {
-        var chapters = CHAPTERS[lang];
-        idx = ((idx % 6) + 6) % 6;
-        curIdx = idx;
-        numEl.textContent    = idx + 1;
-        labelBox.textContent = chapters[idx].label;
-        var el = document.getElementById(chapters[idx].id);
-        if (el) el.scrollIntoView({ behavior: smooth ? 'smooth' : 'instant', block: 'start' });
-    }
+function snap(){
+  var s=Math.round(wheelAngle/60)*60; setAngle(s,true);
+  var idx=(((-s/60)%6)+6)%6; go(idx,true);
+}
 
-    function snapWheel() {
-        var snapped = Math.round(wheelAngle / 60) * 60;
-        wheelAngle  = snapped;
-        svg.style.transform = 'rotate(' + snapped + 'deg)';
-        var idx = (((- snapped / 60) % 6) + 6) % 6;
-        goToChapter(idx, true);
-    }
+function ta(touch){
+  var r=svg.getBoundingClientRect();
+  return Math.atan2(touch.clientY-(r.top+r.height/2),touch.clientX-(r.left+r.width/2))*180/Math.PI;
+}
 
-    /* ── touch events ── */
-    svg.addEventListener('touchstart', function (e) {
-        e.preventDefault();
-        dragging        = true;
-        svg.style.transition = 'none';
-        startTouchAngle = touchAngle(e.touches[0]);
-        startWheelAngle = wheelAngle;
-    }, { passive: false });
+function showLabel(){
+  clearTimeout(hideTimer); labelBox.classList.add('visible');
+  var r=nav.getBoundingClientRect();
+  labelBox.style.top=(r.top+r.height/2)+'px';
+  labelBox.style.right=(window.innerWidth-r.left+8)+'px';
+  labelBox.style.left='auto'; labelBox.style.transform='translateY(-50%)';
+}
+function schedHide(){ hideTimer=setTimeout(function(){labelBox.classList.remove('visible');},1000); }
 
-    svg.addEventListener('touchmove', function (e) {
-        e.preventDefault();
-        if (!dragging) return;
-        var delta   = touchAngle(e.touches[0]) - startTouchAngle;
-        wheelAngle  = startWheelAngle + delta;
-        svg.style.transform = 'rotate(' + wheelAngle + 'deg)';
+svg.addEventListener('touchstart',function(e){
+  e.preventDefault(); rotating=true; svg.style.transition='none';
+  startTA=ta(e.touches[0]); startWA=wheelAngle; prevAngle=wheelAngle;
+  showLabel(); hintDir.textContent='';
+},{passive:false});
 
-        /* update chapter label while dragging */
-        var idx = (((- Math.round(wheelAngle / 60)) % 6) + 6) % 6;
-        if (idx !== curIdx) {
-            curIdx = idx;
-            numEl.textContent    = idx + 1;
-            labelBox.textContent = CHAPTERS[lang][idx].label;
-            /* scroll content as wheel turns */
-            var el = document.getElementById(CHAPTERS[lang][idx].id);
-            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    }, { passive: false });
+svg.addEventListener('touchmove',function(e){
+  e.preventDefault(); if(!rotating) return;
+  var delta=ta(e.touches[0])-startTA;
+  wheelAngle=startWA+delta; svg.style.transform='rotate('+wheelAngle+'deg)';
+  var diff=wheelAngle-prevAngle;
+  if(diff>4) hintDir.textContent='↻ Next ▶';
+  else if(diff<-4) hintDir.textContent='↺ ◀ Prev';
+  var idx=(((-Math.round(wheelAngle/60))%6)+6)%6;
+  if(idx!==curIdx){
+    prevAngle=wheelAngle; hintDir.textContent='';
+    curIdx=idx; numEl.textContent=idx+1;
+    labelBox.textContent=CHAPTERS[lang][idx].label; click();
+    var el=document.getElementById(CHAPTERS[lang][idx].id);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+},{passive:false});
 
-    svg.addEventListener('touchend', function () {
-        dragging = false;
-        svg.style.transition = 'transform 0.18s cubic-bezier(.25,.8,.25,1)';
-        snapWheel();
+svg.addEventListener('touchend',function(){
+  rotating=false; svg.style.transition='transform 0.2s cubic-bezier(.25,.8,.25,1)';
+  snap(); hintDir.textContent=''; schedHide();
+});
+
+/* drag wheel to any position */
+var moving=false,mSX,mSY,mSL,mST;
+var dh=document.getElementById('wheel-drag-handle');
+dh.addEventListener('touchstart',function(e){
+  e.stopPropagation(); e.preventDefault(); moving=true;
+  var t=e.touches[0]; mSX=t.clientX; mSY=t.clientY;
+  var r=nav.getBoundingClientRect(); mSL=r.left; mST=r.top;
+  nav.style.right='auto'; nav.style.left=mSL+'px';
+  nav.style.top=mST+'px'; nav.style.transform='none';
+},{passive:false});
+document.addEventListener('touchmove',function(e){
+  if(!moving) return; e.preventDefault();
+  var t=e.touches[0];
+  nav.style.left=Math.max(0,Math.min(window.innerWidth-100,mSL+t.clientX-mSX))+'px';
+  nav.style.top=Math.max(0,Math.min(window.innerHeight-180,mST+t.clientY-mSY))+'px';
+},{passive:false});
+document.addEventListener('touchend',function(){moving=false;});
+
+/* scroll sync — gentle drift */
+var scrollTmr;
+window.addEventListener('scroll',function(){
+  if(rotating||moving) return;
+  clearTimeout(scrollTmr);
+  scrollTmr=setTimeout(function(){
+    var chs=CHAPTERS[lang],best=curIdx,bestV=-1;
+    chs.forEach(function(ch,i){
+      var el=document.getElementById(ch.id); if(!el) return;
+      var rect=el.getBoundingClientRect();
+      var vis=Math.min(rect.bottom,window.innerHeight)-Math.max(rect.top,0);
+      if(vis>bestV){bestV=vis;best=i;}
     });
+    if(best!==curIdx){
+      var target=-best*60;
+      setAngle(wheelAngle+(target-wheelAngle)*0.35,true);
+      curIdx=best; numEl.textContent=best+1;
+      labelBox.textContent=CHAPTERS[lang][best].label;
+    }
+  },120);
+},{passive:true});
 
-    /* ── language switch ── */
-    window.wheelLang = function (l) {
-        lang = l;
-        document.getElementById('wbtn-en').className = l === 'en' ? 'wbtn active' : 'wbtn';
-        document.getElementById('wbtn-zh').className = l === 'zh' ? 'wbtn active' : 'wbtn';
-        wheelAngle = 0;
-        svg.style.transform = 'rotate(0deg)';
-        goToChapter(0, true);
-    };
+window.wheelLang=function(l){
+  lang=l;
+  document.getElementById('wbtn-en').className=l==='en'?'wbtn active':'wbtn';
+  document.getElementById('wbtn-zh').className=l==='zh'?'wbtn active':'wbtn';
+  setAngle(0,true); go(0,true);
+};
 
-    /* init */
-    goToChapter(0, false);
+go(0,false);
 }());
 </script>
-
 </body>
 </html>
