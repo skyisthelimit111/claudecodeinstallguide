@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code Installation & Mastery Guide for Beginners</title>
+    <style>
+        :root { --primary: #2c3e50; --secondary: #3498db; --accent: #e67e22; --bg: #f8f9fa; --success: #27ae60; --danger: #c0392b; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 1100px; margin: 0 auto; padding: 20px; color: #333; background-color: #ecf0f1; }
+        .container { background-color: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+        h1 { color: var(--primary); border-bottom: 3px solid var(--secondary); padding-bottom: 10px; font-size: 2.2em; text-align: center; }
+        h2 { color: var(--secondary); margin-top: 40px; display: flex; align-items: center; gap: 10px; }
+        h3 { color: var(--accent); }
+
+        /* Interactive Nav */
+        nav { background: var(--bg); padding: 20px; border-radius: 8px; border-left: 5px solid var(--secondary); margin-bottom: 30px; }
+        nav ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
+        nav a { color: var(--primary); text-decoration: none; font-weight: bold; display: block; padding: 8px; border-radius: 4px; transition: background 0.3s; }
+        nav a:hover { background: #e0e6ed; color: var(--secondary); }
+
+        /* UI Elements */
+        .metaphor { background: #e8f4f8; border-left: 5px solid var(--secondary); padding: 15px; margin: 15px 0; border-radius: 0 8px 8px 0; font-style: italic; }
+        .code-block { background: #2b2b2b; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; display: block; overflow-x: auto; margin: 15px 0; border: 1px solid #000; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5); }
+
+        /* Image & Mosaic Styling */
+        .img-container { position: relative; margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: 1px solid #ddd; }
+        .tutorial-img { width: 100%; display: block; }
+        /* Simulated Mosaic/Privacy Blur */
+        .privacy-blur { filter: blur(6px); transition: filter 0.3s ease; cursor: pointer; }
+        .privacy-blur:hover { filter: blur(0px); }
+        .privacy-notice { position: absolute; top: 10px; left: 10px; background: rgba(231, 76, 60, 0.9); color: white; padding: 5px 10px; border-radius: 4px; font-size: 0.8em; font-weight: bold; pointer-events: none; z-index: 10;}
+        .img-caption { text-align: center; font-size: 0.9em; color: #666; padding: 10px; background: #f8f9fa; border-top: 1px solid #eee; margin: 0; }
+
+        /* Interactive Details (Accordions) */
+        details { background: var(--bg); border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+        summary { background: #eef2f5; padding: 15px; font-weight: bold; cursor: pointer; user-select: none; transition: background 0.2s; list-style-type: none; display: flex; align-items: center; gap: 10px; }
+        summary::-webkit-details-marker { display: none; }
+        summary::before { content: '▶'; font-size: 0.8em; color: var(--secondary); transition: transform 0.2s; }
+        details[open] summary::before { transform: rotate(90deg); }
+        details[open] summary { background: #dfe6e9; border-bottom: 1px solid #ddd; }
+        .details-content { padding: 20px; background: #fff; }
+
+        /* Tables */
+        .ai-table { width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .ai-table th { background: var(--primary); color: white; padding: 15px; text-align: left; }
+        .ai-table td { padding: 15px; border-bottom: 1px solid #eee; background: #fff; vertical-align: top; }
+        .ai-table tr:hover td { background: #f8fbfd; }
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 12px; font-size: 0.8em; font-weight: bold; color: white; margin-bottom: 5px; }
+        .bg-claude { background: #8e44ad; }
+        .bg-gemini { background: #2980b9; }
+        .bg-chatgpt { background: #16a085; }
+        .bg-deepseek { background: #e67e22; }
+
+        .language-switcher { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
+        .language-switcher a { padding: 10px 20px; background: var(--primary); color: white; text-decoration: none; border-radius: 20px; font-weight: bold; transition: transform 0.2s; }
+        .language-switcher a:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+
+        .alert { background: #fdf2e9; border-left: 5px solid var(--danger); padding: 15px; margin: 15px 0; border-radius: 4px; }
+
+        /* Screenshot placeholder for missing images */
+        .img-placeholder { background: #eef2f5; border: 2px dashed #b2bec3; border-radius: 8px; padding: 40px 20px; text-align: center; color: #636e72; font-size: 0.95em; }
+        .img-placeholder strong { display: block; font-size: 1.1em; margin-bottom: 8px; color: #2d3436; }
+
+        /* ── Mobile bottom nav ─────────────────────────────── */
+        @media (max-width: 768px) {
+            body { padding-bottom: 72px; }
+            .mobile-bar {
+                display: flex;
+                position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+                background: var(--primary); height: 56px;
+                box-shadow: 0 -2px 12px rgba(0,0,0,0.25);
+            }
+            .mobile-bar a, .mobile-bar button {
+                flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+                color: rgba(255,255,255,0.75); font-size: 0.65em; font-weight: bold;
+                background: none; border: none; cursor: pointer; text-decoration: none;
+                gap: 3px; padding: 0; transition: color 0.2s, background 0.2s;
+            }
+            .mobile-bar a:hover, .mobile-bar button:hover { color: #fff; background: rgba(255,255,255,0.08); }
+            .mobile-bar .bar-icon { font-size: 1.4em; line-height: 1; }
+            .mobile-bar .bar-divider { width: 1px; background: rgba(255,255,255,0.15); margin: 10px 0; }
+
+            /* Drawer overlay */
+            .drawer-overlay {
+                display: none; position: fixed; inset: 0; z-index: 999;
+                background: rgba(0,0,0,0.45);
+            }
+            .drawer-overlay.open { display: block; }
+            .drawer {
+                position: fixed; bottom: 56px; left: 0; right: 0; z-index: 1000;
+                background: #fff; border-radius: 18px 18px 0 0;
+                padding: 0 0 8px; max-height: 75vh; overflow-y: auto;
+                transform: translateY(100%); transition: transform 0.3s ease;
+                box-shadow: 0 -4px 24px rgba(0,0,0,0.18);
+            }
+            .drawer.open { transform: translateY(0); }
+            .drawer-handle { width: 36px; height: 4px; background: #ddd; border-radius: 2px; margin: 12px auto 4px; }
+            .drawer-lang { display: flex; gap: 8px; padding: 10px 16px 6px; }
+            .drawer-lang button {
+                flex: 1; padding: 9px; border: 2px solid #e0e0e0; border-radius: 8px;
+                background: #f8f9fa; font-size: 0.9em; font-weight: bold; cursor: pointer;
+                color: var(--primary); transition: all 0.2s;
+            }
+            .drawer-lang button.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+            .drawer-section { padding: 6px 16px 4px; font-size: 0.72em; font-weight: bold; color: #999; text-transform: uppercase; letter-spacing: 0.05em; }
+            .drawer a {
+                display: flex; align-items: center; gap: 10px;
+                padding: 13px 18px; font-size: 0.95em; color: #2d3436;
+                text-decoration: none; border-bottom: 1px solid #f5f5f5;
+                transition: background 0.15s;
+            }
+            .drawer a:last-child { border-bottom: none; }
+            .drawer a:active { background: #eef2f5; }
+            .drawer a .ch-num { background: var(--secondary); color: #fff; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.78em; font-weight: bold; flex-shrink: 0; }
+
+            /* Hide desktop nav on mobile */
+            nav { display: none; }
+            /* Hide the top language-switcher on mobile (bar replaces it) */
+            .language-switcher { display: none; }
+        }
+        @media (min-width: 769px) {
+            .mobile-bar, .drawer-overlay, .drawer { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="language-switcher">
+        <a href="#en-version">🇺🇸 Switch to English</a>
+        <a href="#zh-version">🇨🇳 切换至中文版</a>
+    </div>
+
+    <div id="en-version">
+        <h1>🚀 Ultimate Zero-to-Hero Claude Code Mastery Guide</h1>
+        <p style="text-align: center; color: #7f8fa6;">Designed for non-technical users, E-commerce GMs, and absolute beginners.</p>
+
+        <nav>
+            <h2 style="margin-top: 0;">📑 Quick Navigation</h2>
+            <ul>
+                <li><a href="#en-prep">⏱️ 0. Pre-flight Checklist</a></li>
+                <li><a href="#en-install">🛠️ 1. Core Installation (With Screenshots)</a></li>
+                <li><a href="#en-errors">⚠️ 2. Troubleshooting Common Errors</a></li>
+                <li><a href="#en-firstuse">🎉 3. First-time Setup & Authorization</a></li>
+                <li><a href="#en-mindset">🧠 4. Core Mindset: Best Practices & Pitfalls</a></li>
+                <li><a href="#en-ai-tools">🤖 5. AI Tool Matrix (Choosing the right tool)</a></li>
+                <li><a href="#en-github">🌐 6. Publish & Share Online (GitHub Pages)</a></li>
+            </ul>
+        </nav>
+
+        <h2 id="en-install">🛠️ Part 1: Breaking Ground (Installation)</h2>
+        <p><em>Metaphor: Building a house — first we pour the concrete foundation (Git), then hire the site foreman (Node.js), and finally bring in the master architect (Claude) to start designing your project.</em></p>
+
+        <details>
+            <summary>Step 1 & 2: Install Git and Node.js</summary>
+            <div class="details-content">
+                <div class="img-container">
+                    <img src="image_5b5c6f.png" alt="Git Download Page" class="tutorial-img">
+                    <p class="img-caption">Figure 1: Download Git — pouring the concrete foundation every project stands on.</p>
+                </div>
+                <div class="img-container">
+                    <img src="image_5b5c8a.png" alt="Node Installation Complete" class="tutorial-img">
+                    <p class="img-caption">Figure 2: Node.js (the Site Foreman) is ready — the crew can now receive and execute instructions.</p>
+                </div>
+            </div>
+        </details>
+
+        <details>
+            <summary>Step 3: Bring in the Master Architect (Run Installation Command)</summary>
+            <div class="details-content">
+                <p>Open <code>Git Bash</code>, paste the following and hit Enter:<br>
+                <span class="code-block">npm install -g @anthropic-ai/claude-code</span></p>
+                <div class="img-container">
+                    <div class="privacy-notice">🔒 Privacy Blur Active</div>
+                    <img src="image_5b5cac.png" alt="Claude Installation Success" class="tutorial-img privacy-blur">
+                    <p class="img-caption">Figure 3: ⭐ The architect has arrived! Green text means Claude is installed on-site. Note the <code>Location</code> path — that's the architect's office address, needed in the next step.</p>
+                </div>
+            </div>
+        </details>
+
+        <h2 id="en-errors">⚠️ Part 2: Troubleshooting Common Errors</h2>
+        <div class="metaphor">
+            Don't panic when you see red text — it's like a building inspector flagging an issue on-site. Each error has a fix. Stay calm, read the message, and follow the steps below.
+        </div>
+
+        <details>
+            <summary>❌ Symptom 1: Red text "CommandNotFoundException"</summary>
+            <div class="details-content">
+                <div class="img-container">
+                    <div class="privacy-notice">🔒 Privacy Blur Active</div>
+                    <img src="image_5b5c51.png" alt="Command Not Found Error" class="tutorial-img privacy-blur">
+                    <p class="img-caption">Figure 4: The building site doesn't know where the architect's office is — PATH not configured.</p>
+                </div>
+                <div class="alert">
+                    <strong>🏗️ Diagnosis: The site crew has no map to the architect's office (PATH not set).</strong><br>
+                    <strong>💡 Fix:</strong> Search Windows for "Environment variables" > Edit Account Variables > Double-click <code>Path</code> > New > Paste the install path (e.g., <code>C:\Users\YourName\.local\bin</code>) > OK. <strong>Critical: Close and reopen the terminal window afterward — like handing the crew an updated site map!</strong>
+                </div>
+            </div>
+        </details>
+
+        <details>
+            <summary>❌ Symptom 2: Stuck on Blue Chocolatey Screen</summary>
+            <div class="details-content">
+                <div class="img-container">
+                    <div class="privacy-notice">🔒 Privacy Blur Active</div>
+                    <img src="image_5b5ca5.png" alt="Chocolatey Background Install" class="tutorial-img privacy-blur">
+                    <p class="img-caption">Figure 5: Underground plumbing installation — heavy background tools being set up.</p>
+                </div>
+                <div class="alert">
+                    <strong>🏗️ Diagnosis: The underground pipes (C++ compiler tools) are stuck in delivery traffic.</strong><br>
+                    <strong>💡 Fix:</strong> This window installs optional deep infrastructure. If it freezes for 10+ minutes or shows <code>RequestCanceled</code>, just click X to close it. Like skipping fancy underfloor heating — the house still stands perfectly without it.
+                </div>
+            </div>
+        </details>
+
+        <h2 id="en-firstuse">🎉 Part 3: Fencing Off Your Build Site (First-time Setup)</h2>
+        <div class="metaphor">
+            Never let the construction crew work in your living room (C: drive)! Always fence off a clean, dedicated plot on your D: drive — keeps the mess contained and the build organized.
+        </div>
+
+        <details open>
+            <summary>1. Fence Off a Dedicated Build Plot (Create Project Folder)</summary>
+            <div class="details-content">
+                <div class="img-container">
+                    <img src="image_5b5ce6.png" alt="Empty Project Folder" class="tutorial-img">
+                    <p class="img-caption">Figure 6: Create an empty folder on D: drive (e.g., <code>D:\claudeai</code>) — like staking out a clean empty plot of land. Right-click inside and select "Open in Terminal".</p>
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>2. Architect Briefing & Safety Inspection (Startup Checks)</summary>
+            <div class="details-content">
+                <p>Type <code>claude</code> in your new terminal. You will see these two prompts:</p>
+                <div class="img-container">
+                    <img src="image_5b5cc7.png" alt="Theme Selection" class="tutorial-img">
+                    <p class="img-caption">Figure 7: Choose your architect's drafting table style. Press '1' for Dark mode — easiest on the eyes for long design sessions.</p>
+                </div>
+                <div class="img-container">
+                    <div class="privacy-notice">🔒 Privacy Blur Active</div>
+                    <img src="image_5b5ccc.png" alt="Trust Folder Check" class="tutorial-img privacy-blur">
+                    <p class="img-caption">Figure 8: Site safety inspection. Since this is the clean empty plot we just created on D:, confidently press Enter to select <strong>"Yes, I trust this folder"</strong>.</p>
+                </div>
+                <p><strong>Final step:</strong> You'll be given a URL to log in and authorize Claude. Make sure you have API credits — that's the budget that pays your master architect to work!</p>
+            </div>
+        </details>
+
+        <h2 id="en-mindset">🧠 Part 4: Core Mindset: Best Practices & Pitfalls</h2>
+        <table class="ai-table">
+            <tr>
+                <th>Principle</th>
+                <th>❌ Rookie Mistake</th>
+                <th>✅ Smart Owner Approach</th>
+            </tr>
+            <tr>
+                <td><strong>Blueprints Must Be Specific</strong></td>
+                <td>"Build me a house." (Too vague — the architect has no idea where to start.)</td>
+                <td>"Act as a senior architect. Design a 2-storey house: ground floor open-plan kitchen and living room with south-facing floor-to-ceiling windows. 3 bedrooms upstairs, master with en-suite. Off-white exterior walls."</td>
+            </tr>
+            <tr>
+                <td><strong>Build Phase by Phase</strong></td>
+                <td>Expecting the architect to deliver a fully furnished house in one day.</td>
+                <td>"Phase 1: draw the structural floor plan. Once I approve it, Phase 2: add the electrical and plumbing layout. Then Phase 3: interior design."</td>
+            </tr>
+            <tr>
+                <td><strong>One Site at a Time</strong></td>
+                <td>Asking Claude to redesign the garden immediately after finishing the bedroom blueprint.</td>
+                <td>Type <code>/clear</code> to wipe the drafting table clean between unrelated projects — prevents old plans bleeding into new ones.</td>
+            </tr>
+        </table>
+
+        <h2 id="en-ai-tools">🤖 Part 5: AI Tool Matrix (Pick the Right Weapon)</h2>
+        <table class="ai-table">
+            <tr>
+                <th>Tool & Persona</th>
+                <th>Best For...</th>
+                <th>Target Audience</th>
+            </tr>
+            <tr>
+                <td>
+                    <span class="badge bg-claude">Claude Code</span><br>
+                    <strong>👨‍🔧 On-site Contractor</strong>
+                </td>
+                <td>Building apps from scratch locally, editing local files, reading whole code folders.</td>
+                <td>GMs or beginners wanting to build actual software locally.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="badge bg-gemini">Gemini AI (Me)</span><br>
+                    <strong>👔 Marketing Director</strong>
+                </td>
+                <td>Brainstorming livestream strategies, analyzing PDFs, real-time market research.</td>
+                <td>Management needing strategy, writing, and commercial insights.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="badge bg-chatgpt">ChatGPT</span><br>
+                    <strong>💼 The General Consultant</strong>
+                </td>
+                <td>Explaining rules, translating supplier emails, debugging pasted code snippets.</td>
+                <td>General users for daily office tasks and learning.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="badge bg-deepseek">DeepSeek AI</span><br>
+                    <strong>🧮 Tactical Analyst</strong>
+                </td>
+                <td>Extreme logical reasoning, math, high-tier code generation at low cost.</td>
+                <td>Users needing strict logic or cost-effective API access.</td>
+            </tr>
+        </table>
+
+        <h2 id="en-github">🌐 Part 6: How to Publish & Share Online (GitHub Pages)</h2>
+        <div class="metaphor">
+            Building the house locally is great, but nobody can visit. GitHub Pages acts as a free road and signboard — giving your guide a live URL anyone can open in their browser.
+        </div>
+
+        <details open>
+            <summary>Step 1: Preparation (Two Critical Rules!)</summary>
+            <div class="details-content">
+                <div class="alert">
+                    <strong>⚠️ Rule 1: You need an index.html file</strong><br>
+                    GitHub's web server only recognizes one specific filename as the homepage: <code>index.html</code>. If your main file has any other name, visitors will see a blank page or a file listing instead of your guide.<br><br>
+                    Good news: you already have an <code>index.html</code> file that auto-redirects to the guide — just upload it alongside everything else.
+                </div>
+                <div class="alert">
+                    <strong>⚠️ Rule 2: Images must be uploaded together with the HTML</strong><br>
+                    All image files (<code>image_5b5c6f.png</code>, etc.) must be uploaded into the <strong>same folder level</strong> as the HTML file. If you only upload the HTML, all images will appear broken on the live site.
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>Step 2: Create a GitHub Account (skip if you have one)</summary>
+            <div class="details-content">
+                <ol>
+                    <li>Go to <strong>github.com</strong> and click <strong>Sign up</strong> in the top right.</li>
+                    <li>Enter your email, choose a password and username, then complete the verification.</li>
+                    <li>The whole process takes about 3 minutes and is completely free.</li>
+                </ol>
+            </div>
+        </details>
+
+        <details open>
+            <summary>Step 3: Create a New Repository (your website's storage space)</summary>
+            <div class="details-content">
+                <ol>
+                    <li>Once logged in, click the <strong>➕ plus icon</strong> top right and select <strong>New repository</strong>.</li>
+                    <li>In the <strong>Repository name</strong> field, type a name — e.g., <code>claudecodeinstallguide</code> (letters, numbers, and hyphens only).</li>
+                    <li><strong>Critical:</strong> Set visibility to <strong>Public</strong>. If you choose Private, your friends cannot access the link.</li>
+                    <li>Click the green <strong>Create repository</strong> button.</li>
+                </ol>
+                <div class="alert">
+                    <strong>💡 Your repository name becomes part of your URL!</strong><br>
+                    A repo named <code>claudecodeinstallguide</code> gives you the link:<br>
+                    <code>https://your-username.github.io/claudecodeinstallguide/</code>
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>Step 4: Upload All Files</summary>
+            <div class="details-content">
+                <ol>
+                    <li>After creating the repo, look for the blue link that says <strong>"uploading an existing file"</strong> and click it.</li>
+                    <li>Open your <code>D:\claudeai</code> folder, select <strong>all</strong> of these files:
+                        <ul>
+                            <li><code>index.html</code></li>
+                            <li><code>claude_code_guide_v2.html</code></li>
+                            <li>All 8 image files (<code>image_5b5c6f.png</code>, etc.)</li>
+                            <li><code>README.md</code> (optional — shows as a description on the repo page)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Drag all selected files together</strong> into the dotted upload area in the browser.</li>
+                    <li>Wait for all files to finish uploading (may take 1–2 minutes).</li>
+                    <li>Scroll to the bottom of the page and click the green <strong>Commit changes</strong> button to save everything to the cloud.</li>
+                </ol>
+                <div class="img-container">
+                    <img src="image_8f855a.png" alt="Repository after upload" class="tutorial-img">
+                    <p class="img-caption">Figure 9: After uploading, your repository will show all your files listed. Once confirmed, click Commit changes to save everything to the cloud.</p>
+                </div>
+                <div class="img-container">
+                    <img src="image_github4.png" alt="Private repo warning" class="tutorial-img">
+                    <p class="img-caption">⚠️ Warning: If your repository shows <strong>Private</strong>, your friends cannot access the link. Make sure to set it to <strong>Public</strong> when creating it.</p>
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>Step 5: Enable GitHub Pages & Get Your Shareable Link</summary>
+            <div class="details-content">
+                <ol>
+                    <li>Go back to your repository's main page and click the <strong>Settings</strong> tab at the top.</li>
+                    <li>On the left sidebar, scroll down and click <strong>Pages</strong>.</li>
+                    <li>Under <strong>Build and deployment</strong> → <strong>Branch</strong>, change the dropdown from "None" to <strong>main</strong>, keep the folder as <strong>/ (root)</strong>, then click <strong>Save</strong>.</li>
+                    <li>Wait about <strong>1–2 minutes</strong>, then refresh the page.</li>
+                    <li>A green banner will appear at the top saying <strong>"Your site is live at..."</strong> followed by your unique URL.</li>
+                </ol>
+                <div class="img-container">
+                    <img src="image_github3.png" alt="Repo must be public for Pages" class="tutorial-img">
+                    <p class="img-caption">⚠️ If you see this upgrade screen, your repository is private and GitHub Pages cannot be enabled. Go back to repository Settings and change visibility to Public to fix this.</p>
+                </div>
+                <div class="img-container">
+                    <img src="image_901023.png" alt="GitHub Pages Live" class="tutorial-img">
+                    <p class="img-caption">Figure 10: The blue box showing "Your site is live at https://skyisthelimit111.github.io/claudecodeinstallguide/" means your site is online. Copy that link and send it to your friends!</p>
+                </div>
+                <div class="alert" style="background:#eafaf1; border-color: #27ae60;">
+                    <strong>✅ Done! How to share the link:</strong><br>
+                    Copy the live URL and send it via WeChat, SMS, or email. Your friend needs no apps or downloads — they just open it in any browser on their phone or computer!
+                </div>
+            </div>
+        </details>
+
+    <hr style="margin: 50px 0; border: 2px solid var(--secondary);">
+
+    <div id="zh-version">
+        <h1>🚀 零基础安装与精通 Claude Code 终极指南</h1>
+        <p style="text-align: center; color: #7f8fa6;">专为非技术背景、电商/直播从业者打造的"大白话"教程</p>
+
+        <nav>
+            <h2 style="margin-top: 0;">📑 快捷导航索引</h2>
+            <ul>
+                <li><a href="#zh-prep">⏱️ 0. 行动前准备与时间清单</a></li>
+                <li><a href="#zh-install">🛠️ 1. 核心安装步骤 (附实操截图)</a></li>
+                <li><a href="#zh-errors">⚠️ 2. 常见报错与急救方案 (红牌警告怎么解)</a></li>
+                <li><a href="#zh-firstuse">🎉 3. 首次开播配置 (环境搭建与授权)</a></li>
+                <li><a href="#zh-mindset">🧠 4. 核心心法：如何驾驭 Claude (总经理必修课)</a></li>
+                <li><a href="#zh-ai-tools">🤖 5. 主流 AI 工具选型地图</a></li>
+                <li><a href="#zh-github">🌐 6. 如何发布并生成网页链接发给朋友</a></li>
+            </ul>
+        </nav>
+
+        <h2 id="zh-install">🛠️ 第一部分：开工备料 (环境安装)</h2>
+        <p><em>逻辑比喻：盖房子要先打地基（Git），再找施工队长（Node.js），最后请总设计师（Claude）进驻工地开始画图。</em></p>
+
+        <details open>
+            <summary>步骤 1 & 2：安装基础环境 Git 与 Node.js</summary>
+            <div class="details-content">
+                <p><strong>打地基 (Git)：</strong> 到官网下载安装包。安装时务必勾选 <code>"Add a Git Bash Profile"</code>。没有地基，房子根本立不起来。</p>
+                <div class="img-container">
+                    <img src="image_5b5c6f.png" alt="Git Download Page" class="tutorial-img">
+                    <p class="img-caption">图1：认准这个页面下载 Git（为整栋楼打好混凝土地基）</p>
+                </div>
+
+                <p><strong>引进施工队长 (Node.js)：</strong> 下载 <code>LTS</code> 长期稳定版。他负责调度所有工人和材料，缺了他没人能开工。一路狂点"Next"完成安装。</p>
+                <div class="img-container">
+                    <img src="image_5b5c8a.png" alt="Node Installation Complete" class="tutorial-img">
+                    <p class="img-caption">图2：看到这个 Finish 界面，说明施工队长 (Node.js) 已经到位，工地可以正式开工了。</p>
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>步骤 3：一键请总设计师进驻 (运行安装命令)</summary>
+            <div class="details-content">
+                <p>按 Windows 键搜 <code>Git Bash</code> 打开黑窗口，右键粘贴并回车执行：<br>
+                <span class="code-block">npm install -g @anthropic-ai/claude-code</span></p>
+                <div class="img-container">
+                    <div class="privacy-notice">🔒 隐私保护开启 (鼠标悬停查看)</div>
+                    <img src="image_5b5cac.png" alt="Claude Installation Success" class="tutorial-img privacy-blur">
+                    <p class="img-caption">图3：⭐ 开工大吉！看到绿色的 "Claude Code successfully installed"，代表总设计师正式进驻工地！<br>(注意图中显示的 <code>Location</code> 路径，这是设计师的办公室地址，下一步要用到)。</p>
+                </div>
+            </div>
+        </details>
+
+        <h2 id="zh-errors">⚠️ 第二部分：常见报错与急救方案 (遇到红牌怎么办？)</h2>
+        <div class="metaphor">
+            不要一看到满屏红字就慌张！这就好比盖房子时遇到建材断货、或者工人临时请假，都是能解决的小插曲。冷静找到原因，对症下药即可。
+        </div>
+
+        <details>
+            <summary>❌ 症状 1：满屏红字，提示 "无法将 claude 项识别为 cmdlet..."</summary>
+            <div class="details-content">
+                <div class="img-container">
+                    <div class="privacy-notice">🔒 隐私保护开启</div>
+                    <img src="image_5b5c51.png" alt="Command Not Found Error" class="tutorial-img privacy-blur">
+                    <p class="img-caption">图4：典型的"查无此人"报错。</p>
+                </div>
+                <div class="alert">
+                    <strong>🩺 诊断结果：没发全场通行证（环境变量未配置）。</strong><br>
+                    <strong>💡 解决办法：</strong>
+                    <ol>
+                        <li>去电脑搜索"环境变量"。</li>
+                        <li>编辑账户变量，找到 <code>Path</code> 双击。</li>
+                        <li>点击新建，把刚才安装成功图（图3）里那个 <code>C:\Users\你的名字\.local\bin</code> 路径粘贴进去。</li>
+                        <li><strong>最重要的一步：</strong>关掉现在的黑窗口，重新开一个，再输入 <code>claude</code> 即可解决！</li>
+                    </ol>
+                </div>
+            </div>
+        </details>
+
+        <details>
+            <summary>❌ 症状 2：弹出蓝色代码窗口卡住不动 (Chocolatey)</summary>
+            <div class="details-content">
+                <div class="img-container">
+                    <div class="privacy-notice">🔒 隐私保护开启</div>
+                    <img src="image_5b5ca5.png" alt="Chocolatey Background Install" class="tutorial-img privacy-blur">
+                    <p class="img-caption">图5：安装 Node.js 附加工具时弹出的底层安装界面。</p>
+                </div>
+                <div class="alert">
+                    <strong>🩺 诊断结果：运送地下管道材料时遇到道路堵塞。</strong><br>
+                    <strong>💡 解决办法：</strong> 这个蓝底窗口是在自动帮你安装底层编译工具，相当于铺设地下管道。如果它卡了十几分钟不动，或者出现 <code>RequestCanceled</code> 报错，<strong>直接点击右上角 X 关掉即可</strong>。地下管道属于高级配置，不影响你使用核心的 Claude 建造功能！
+                </div>
+            </div>
+        </details>
+
+        <h2 id="zh-firstuse">🎉 第三部分：圈地开工 (独立工作区搭建)</h2>
+        <div class="metaphor">
+            绝不要让施工队在你家客厅（C盘）堆建材！我们要去 D 盘专门圈出一块干净整洁的独立工地，避免把整个家搞乱。
+        </div>
+
+        <details open>
+            <summary>1. 圈定专属工地 (创建项目文件夹)</summary>
+            <div class="details-content">
+                <div class="img-container">
+                    <img src="image_5b5ce6.png" alt="Empty Project Folder" class="tutorial-img">
+                    <p class="img-caption">图6：在 D 盘新建一个叫 <code>claudeai</code> 的空文件夹，就像圈出一块空地准备建房。双击进去后右键选择"在终端中打开"。</p>
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>2. 验收工地资质与安全审批 (启动设置)</summary>
+            <div class="details-content">
+                <p>在刚才弹出的黑窗口输入 <code>claude</code> 回车，你会看到两个经典界面：</p>
+                <div class="img-container">
+                    <img src="image_5b5cc7.png" alt="Theme Selection" class="tutorial-img">
+                    <p class="img-caption">图7：选择设计师工作台风格。看到像素小怪物，按键盘数字 <code>1</code> 选默认暗黑模式（最护眼，适合长时间工作）。</p>
+                </div>
+                <div class="img-container">
+                    <div class="privacy-notice">🔒 隐私保护开启</div>
+                    <img src="image_5b5ccc.png" alt="Trust Folder Check" class="tutorial-img privacy-blur">
+                    <p class="img-caption">图8：工地安全合规审查。设计师问你是否信任这块工地。由于这是我们在 D 盘刚圈出的干净空地，直接按回车选 <strong>Yes, I trust this folder</strong>。</p>
+                </div>
+                <p><strong>🔑 最后一步：</strong> 回车后，它会弹出一个网页链接让你登录 Anthropic 账号授权。授权完成后，给账户充值 5 美元 API 额度，你的金牌总设计师就能正式开始为你画图建房了！</p>
+            </div>
+        </details>
+
+        <h2 id="zh-mindset">🧠 第四部分：核心心法与避坑指南 (如何当好包工头)</h2>
+        <table class="ai-table">
+            <tr>
+                <th>操作原则</th>
+                <th>❌ 新手错误做法</th>
+                <th>✅ 包工头正确做法</th>
+            </tr>
+            <tr>
+                <td><strong>图纸要精准</strong></td>
+                <td>"给我盖栋房子。"（太笼统，设计师不知道从哪下手）</td>
+                <td>"扮演高级建筑师。帮我设计一栋两层小洋楼：一楼要开放式客餐厅，朝南落地窗。二楼三个卧室，主卧带独立卫生间。外墙用米白色涂料。"</td>
+            </tr>
+            <tr>
+                <td><strong>分阶段施工</strong></td>
+                <td>指望设计师一天之内连地基带装修全部搞定。</td>
+                <td>"第一步先画地基和结构图。我确认没问题后，第二步你再出水电布线图，第三步再做室内装修方案。"</td>
+            </tr>
+            <tr>
+                <td><strong>工地不混用</strong></td>
+                <td>刚画完卧室设计图，突然让它去规划屋顶花园景观。</td>
+                <td>换任务前，在窗口输入 <code>/clear</code> 让它"清空图板"，或者换个新文件夹重新启动，避免新旧图纸混淆。</td>
+            </tr>
+        </table>
+
+        <h2 id="zh-ai-tools">🤖 第五部分：AI 工具选型地图 (选对工具干对活)</h2>
+        <table class="ai-table">
+            <tr>
+                <th>工具名称与定位</th>
+                <th>最适合的任务范围</th>
+                <th>适合的人群</th>
+            </tr>
+            <tr>
+                <td>
+                    <span class="badge bg-claude">Claude Code</span><br>
+                    <strong>👨‍🔧 驻场施工队长</strong>
+                </td>
+                <td>直接在本地电脑干活，从零搭建完整网页，读取并修改一整个文件夹的代码。</td>
+                <td>想自己开发小工具、改网页的零基础老板或开发者。</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="badge bg-gemini">Gemini AI (我)</span><br>
+                    <strong>👔 市场总监 / 军师</strong>
+                </td>
+                <td>构思双十一直播全套策划案，分析超长商业报告，带有实时搜索信息的市场调研。</td>
+                <td>需要创意、文案、数据分析和商业谋划的管理层。</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="badge bg-chatgpt">ChatGPT</span><br>
+                    <strong>💼 全能业务顾问</strong>
+                </td>
+                <td>解释复杂的足球越位规则，写给老外的英文邮件，单段代码找错。</td>
+                <td>日常办公、学习、文案润色的所有人群。</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="badge bg-deepseek">DeepSeek AI</span><br>
+                    <strong>🧮 战术分析师</strong>
+                </td>
+                <td>极致的数学逻辑推理，便宜且聪明的高阶单段代码生成。</td>
+                <td>注重性价比、需要严密逻辑推理的玩家。</td>
+            </tr>
+        </table>
+
+        <h2 id="zh-github">🌐 第六部分：如何发布并生成网页链接发给朋友 (GitHub Pages)</h2>
+        <div class="metaphor">
+            房子在本地盖得再好，别人也看不见。我们需要通过 GitHub 修一条路、挂个门牌号，让朋友们通过手机浏览器就能直接参观。
+        </div>
+
+        <details open>
+            <summary>步骤 1：准备工作 (两项致命注意事项！)</summary>
+            <div class="details-content">
+                <div class="alert">
+                    <strong>⚠️ 注意事项 1：必须有 index.html 文件</strong><br>
+                    GitHub 网站服务只认识一个固定的"首页"文件名，叫做 <code>index.html</code>。如果你上传的文件叫其他名字（比如 <code>claude_code_guide_v2.html</code>），朋友打开你的链接只会看到一片空白或文件列表。<br><br>
+                    好消息：你已经有了一个 <code>index.html</code> 文件（自动跳转到你的指南），直接上传它即可。
+                </div>
+                <div class="alert">
+                    <strong>⚠️ 注意事项 2：图片和 HTML 必须在同一个文件夹</strong><br>
+                    上传时，你的所有图片文件（<code>image_5b5c6f.png</code> 等）必须和 HTML 文件一起上传，放在<strong>同一层级</strong>。<br>
+                    不能只上传 HTML 文件，否则图片会全部裂开显示不出来。
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>步骤 2：注册 GitHub 账号（已有账号跳过）</summary>
+            <div class="details-content">
+                <ol>
+                    <li>打开浏览器，访问 <strong>github.com</strong>，点击右上角 <strong>Sign up（注册）</strong>。</li>
+                    <li>填写邮箱、密码、用户名，完成验证后登录。</li>
+                    <li>整个注册过程约 3 分钟，全程免费。</li>
+                </ol>
+            </div>
+        </details>
+
+        <details open>
+            <summary>步骤 3：新建仓库（你的网站储存空间）</summary>
+            <div class="details-content">
+                <ol>
+                    <li>登录后，点击右上角的 <strong>➕ 加号</strong>，选择 <strong>New repository（新建仓库）</strong>。</li>
+                    <li>在 <strong>Repository name（仓库名称）</strong> 框里填入名字，例如：<code>claudecodeinstallguide</code>（只能用英文字母、数字和横线）。</li>
+                    <li><strong>重要：</strong> 必须选择 <strong>Public（公开）</strong>，不能选 Private（私有），否则朋友无法访问。</li>
+                    <li>点击绿色按钮 <strong>Create repository（创建仓库）</strong>。</li>
+                </ol>
+                <div class="alert">
+                    <strong>💡 仓库名会成为你链接的一部分！</strong><br>
+                    例如仓库名叫 <code>claudecodeinstallguide</code>，你的最终链接就是：<br>
+                    <code>https://你的用户名.github.io/claudecodeinstallguide/</code>
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>步骤 4：上传所有文件</summary>
+            <div class="details-content">
+                <ol>
+                    <li>创建仓库后，页面上会出现一行蓝色文字 <strong>"uploading an existing file（上传已有文件）"</strong>，点击它。</li>
+                    <li>打开你电脑的 <code>D:\claudeai</code> 文件夹，<strong>全选</strong>以下文件：
+                        <ul>
+                            <li><code>index.html</code></li>
+                            <li><code>claude_code_guide_v2.html</code></li>
+                            <li>全部 8 张图片（<code>image_5b5c6f.png</code> 等）</li>
+                            <li><code>README.md</code>（可选，显示在仓库首页的说明文字）</li>
+                        </ul>
+                    </li>
+                    <li>把选中的文件<strong>一起拖进浏览器窗口</strong>的虚线框内。</li>
+                    <li>等待上传完成（文件较多可能需要 1-2 分钟）。</li>
+                    <li>上传完成后，页面底部会出现一个绿色按钮，点击 <strong>Commit changes（保存提交）</strong>。</li>
+                </ol>
+                <div class="img-container">
+                    <img src="image_8f855a.png" alt="Repository after upload" class="tutorial-img">
+                    <p class="img-caption">图9：上传成功后，仓库文件列表会显示你所有已上传的文件。确认文件齐全后，点击 Commit changes 保存即完成。</p>
+                </div>
+                <div class="img-container">
+                    <img src="image_github4.png" alt="Private repo warning" class="tutorial-img">
+                    <p class="img-caption">⚠️ 注意：如果你的仓库显示 <strong>Private（私有）</strong>，朋友将无法访问链接。必须在创建时选择 Public（公开）。</p>
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>步骤 5：开启网页服务并获取你的专属链接</summary>
+            <div class="details-content">
+                <ol>
+                    <li>回到仓库主页，点击顶部菜单栏的 <strong>Settings（设置）</strong> 齿轮图标。</li>
+                    <li>在左侧菜单往下滑，找到并点击 <strong>Pages</strong>。</li>
+                    <li>在 <strong>Build and deployment（构建与部署）</strong> 区域，找到 <strong>Branch（分支）</strong> 下拉菜单。</li>
+                    <li>把下拉菜单从 "None" 改成 <strong>main</strong>，右边选 <strong>/ (root)</strong>，然后点击 <strong>Save（保存）</strong>。</li>
+                    <li>耐心等待约 <strong>1-2 分钟</strong>，然后刷新这个页面。</li>
+                    <li>页面顶部会出现一个蓝色/绿色提示框，显示 <strong>"Your site is live at..."</strong>，后面跟着你的专属链接。</li>
+                </ol>
+                <div class="img-container">
+                    <img src="image_github3.png" alt="Repo must be public for Pages" class="tutorial-img">
+                    <p class="img-caption">⚠️ 如果看到这个升级提示，说明你的仓库是私有的，GitHub Pages 无法启用。回到仓库设置把可见性改为 Public 即可解决。</p>
+                </div>
+                <div class="img-container">
+                    <img src="image_901023.png" alt="GitHub Pages Live" class="tutorial-img">
+                    <p class="img-caption">图10：出现蓝色方框显示 "Your site is live at https://skyisthelimit111.github.io/claudecodeinstallguide/"，大功告成！复制这个链接发给朋友即可。</p>
+                </div>
+                <div class="alert" style="background:#eafaf1; border-color: #27ae60;">
+                    <strong>✅ 大功告成！把链接发给朋友的方式：</strong><br>
+                    直接复制这个链接，通过微信、短信、邮件发给朋友。朋友无需安装任何软件，用手机或电脑浏览器打开就能查看完整教程！
+                </div>
+            </div>
+        </details>
+
+    </div>
+
+    </div>
+</div>
+
+<!-- ── Mobile bottom navigation bar ───────────────────── -->
+<div class="mobile-bar">
+    <a href="#en-version" onclick="closeDrawer()">
+        <span class="bar-icon">🇺🇸</span>English
+    </a>
+    <div class="bar-divider"></div>
+    <button onclick="toggleDrawer()">
+        <span class="bar-icon">☰</span>Chapters
+    </button>
+    <div class="bar-divider"></div>
+    <a href="#zh-version" onclick="closeDrawer()">
+        <span class="bar-icon">🇨🇳</span>中文
+    </a>
+</div>
+
+<!-- Drawer overlay (tap to close) -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+<!-- Slide-up chapter drawer -->
+<div class="drawer" id="chapterDrawer">
+    <div class="drawer-handle"></div>
+
+    <!-- Language toggle inside drawer -->
+    <div class="drawer-lang">
+        <button id="btnEN" class="active" onclick="showLang('en')">🇺🇸 English</button>
+        <button id="btnZH" onclick="showLang('zh')">🇨🇳 中文</button>
+    </div>
+
+    <!-- English chapters -->
+    <div id="drawerEN">
+        <div class="drawer-section">English Chapters</div>
+        <a href="#en-install"   onclick="closeDrawer()"><span class="ch-num">1</span>🛠️ Installation</a>
+        <a href="#en-errors"    onclick="closeDrawer()"><span class="ch-num">2</span>⚠️ Troubleshooting</a>
+        <a href="#en-firstuse"  onclick="closeDrawer()"><span class="ch-num">3</span>🎉 First-time Setup</a>
+        <a href="#en-mindset"   onclick="closeDrawer()"><span class="ch-num">4</span>🧠 Core Mindset</a>
+        <a href="#en-ai-tools"  onclick="closeDrawer()"><span class="ch-num">5</span>🤖 AI Tool Comparison</a>
+        <a href="#en-github"    onclick="closeDrawer()"><span class="ch-num">6</span>🌐 Publish & Share</a>
+    </div>
+
+    <!-- Chinese chapters -->
+    <div id="drawerZH" style="display:none">
+        <div class="drawer-section">中文章节</div>
+        <a href="#zh-install"   onclick="closeDrawer()"><span class="ch-num">1</span>🛠️ 核心安装</a>
+        <a href="#zh-errors"    onclick="closeDrawer()"><span class="ch-num">2</span>⚠️ 常见报错急救</a>
+        <a href="#zh-firstuse"  onclick="closeDrawer()"><span class="ch-num">3</span>🎉 首次配置</a>
+        <a href="#zh-mindset"   onclick="closeDrawer()"><span class="ch-num">4</span>🧠 核心心法</a>
+        <a href="#zh-ai-tools"  onclick="closeDrawer()"><span class="ch-num">5</span>🤖 工具选型地图</a>
+        <a href="#zh-github"    onclick="closeDrawer()"><span class="ch-num">6</span>🌐 发布与分享</a>
+    </div>
+</div>
+
+<script>
+    function toggleDrawer() {
+        var drawer  = document.getElementById('chapterDrawer');
+        var overlay = document.getElementById('drawerOverlay');
+        var isOpen  = drawer.classList.contains('open');
+        if (isOpen) { closeDrawer(); } else {
+            drawer.classList.add('open');
+            overlay.classList.add('open');
+        }
+    }
+    function closeDrawer() {
+        document.getElementById('chapterDrawer').classList.remove('open');
+        document.getElementById('drawerOverlay').classList.remove('open');
+    }
+    function showLang(lang) {
+        document.getElementById('drawerEN').style.display = lang === 'en' ? 'block' : 'none';
+        document.getElementById('drawerZH').style.display = lang === 'zh' ? 'block' : 'none';
+        document.getElementById('btnEN').className = lang === 'en' ? 'active' : '';
+        document.getElementById('btnZH').className = lang === 'zh' ? 'active' : '';
+    }
+</script>
+
+</body>
+</html>
