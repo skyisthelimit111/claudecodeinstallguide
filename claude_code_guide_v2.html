@@ -66,9 +66,291 @@
 
 <div class="container">
     <div class="language-switcher">
-        <a href="#zh-version">🇨🇳 切换至中文版</a>
         <a href="#en-version">🇺🇸 Switch to English</a>
+        <a href="#zh-version">🇨🇳 切换至中文版</a>
     </div>
+
+    <div id="en-version">
+        <h1>🚀 Ultimate Zero-to-Hero Claude Code Mastery Guide</h1>
+        <p style="text-align: center; color: #7f8fa6;">Designed for non-technical users, E-commerce GMs, and absolute beginners.</p>
+
+        <nav>
+            <h2 style="margin-top: 0;">📑 Quick Navigation</h2>
+            <ul>
+                <li><a href="#en-prep">⏱️ 0. Pre-flight Checklist</a></li>
+                <li><a href="#en-install">🛠️ 1. Core Installation (With Screenshots)</a></li>
+                <li><a href="#en-errors">⚠️ 2. Troubleshooting Common Errors</a></li>
+                <li><a href="#en-firstuse">🎉 3. First-time Setup & Authorization</a></li>
+                <li><a href="#en-mindset">🧠 4. Core Mindset: Best Practices & Pitfalls</a></li>
+                <li><a href="#en-ai-tools">🤖 5. AI Tool Matrix (Choosing the right tool)</a></li>
+                <li><a href="#en-github">🌐 6. Publish & Share Online (GitHub Pages)</a></li>
+            </ul>
+        </nav>
+
+        <h2 id="en-install">🛠️ Part 1: Breaking Ground (Installation)</h2>
+        <p><em>Metaphor: Building a house — first we pour the concrete foundation (Git), then hire the site foreman (Node.js), and finally bring in the master architect (Claude) to start designing your project.</em></p>
+
+        <details>
+            <summary>Step 1 & 2: Install Git and Node.js</summary>
+            <div class="details-content">
+                <div class="img-container">
+                    <img src="image_5b5c6f.png" alt="Git Download Page" class="tutorial-img">
+                    <p class="img-caption">Figure 1: Download Git — pouring the concrete foundation every project stands on.</p>
+                </div>
+                <div class="img-container">
+                    <img src="image_5b5c8a.png" alt="Node Installation Complete" class="tutorial-img">
+                    <p class="img-caption">Figure 2: Node.js (the Site Foreman) is ready — the crew can now receive and execute instructions.</p>
+                </div>
+            </div>
+        </details>
+
+        <details>
+            <summary>Step 3: Bring in the Master Architect (Run Installation Command)</summary>
+            <div class="details-content">
+                <p>Open <code>Git Bash</code>, paste the following and hit Enter:<br>
+                <span class="code-block">npm install -g @anthropic-ai/claude-code</span></p>
+                <div class="img-container">
+                    <div class="privacy-notice">🔒 Privacy Blur Active</div>
+                    <img src="image_5b5cac.png" alt="Claude Installation Success" class="tutorial-img privacy-blur">
+                    <p class="img-caption">Figure 3: ⭐ The architect has arrived! Green text means Claude is installed on-site. Note the <code>Location</code> path — that's the architect's office address, needed in the next step.</p>
+                </div>
+            </div>
+        </details>
+
+        <h2 id="en-errors">⚠️ Part 2: Troubleshooting Common Errors</h2>
+        <div class="metaphor">
+            Don't panic when you see red text — it's like a building inspector flagging an issue on-site. Each error has a fix. Stay calm, read the message, and follow the steps below.
+        </div>
+
+        <details>
+            <summary>❌ Symptom 1: Red text "CommandNotFoundException"</summary>
+            <div class="details-content">
+                <div class="img-container">
+                    <div class="privacy-notice">🔒 Privacy Blur Active</div>
+                    <img src="image_5b5c51.png" alt="Command Not Found Error" class="tutorial-img privacy-blur">
+                    <p class="img-caption">Figure 4: The building site doesn't know where the architect's office is — PATH not configured.</p>
+                </div>
+                <div class="alert">
+                    <strong>🏗️ Diagnosis: The site crew has no map to the architect's office (PATH not set).</strong><br>
+                    <strong>💡 Fix:</strong> Search Windows for "Environment variables" > Edit Account Variables > Double-click <code>Path</code> > New > Paste the install path (e.g., <code>C:\Users\YourName\.local\bin</code>) > OK. <strong>Critical: Close and reopen the terminal window afterward — like handing the crew an updated site map!</strong>
+                </div>
+            </div>
+        </details>
+
+        <details>
+            <summary>❌ Symptom 2: Stuck on Blue Chocolatey Screen</summary>
+            <div class="details-content">
+                <div class="img-container">
+                    <div class="privacy-notice">🔒 Privacy Blur Active</div>
+                    <img src="image_5b5ca5.png" alt="Chocolatey Background Install" class="tutorial-img privacy-blur">
+                    <p class="img-caption">Figure 5: Underground plumbing installation — heavy background tools being set up.</p>
+                </div>
+                <div class="alert">
+                    <strong>🏗️ Diagnosis: The underground pipes (C++ compiler tools) are stuck in delivery traffic.</strong><br>
+                    <strong>💡 Fix:</strong> This window installs optional deep infrastructure. If it freezes for 10+ minutes or shows <code>RequestCanceled</code>, just click X to close it. Like skipping fancy underfloor heating — the house still stands perfectly without it.
+                </div>
+            </div>
+        </details>
+
+        <h2 id="en-firstuse">🎉 Part 3: Fencing Off Your Build Site (First-time Setup)</h2>
+        <div class="metaphor">
+            Never let the construction crew work in your living room (C: drive)! Always fence off a clean, dedicated plot on your D: drive — keeps the mess contained and the build organized.
+        </div>
+
+        <details open>
+            <summary>1. Fence Off a Dedicated Build Plot (Create Project Folder)</summary>
+            <div class="details-content">
+                <div class="img-container">
+                    <img src="image_5b5ce6.png" alt="Empty Project Folder" class="tutorial-img">
+                    <p class="img-caption">Figure 6: Create an empty folder on D: drive (e.g., <code>D:\claudeai</code>) — like staking out a clean empty plot of land. Right-click inside and select "Open in Terminal".</p>
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>2. Architect Briefing & Safety Inspection (Startup Checks)</summary>
+            <div class="details-content">
+                <p>Type <code>claude</code> in your new terminal. You will see these two prompts:</p>
+                <div class="img-container">
+                    <img src="image_5b5cc7.png" alt="Theme Selection" class="tutorial-img">
+                    <p class="img-caption">Figure 7: Choose your architect's drafting table style. Press '1' for Dark mode — easiest on the eyes for long design sessions.</p>
+                </div>
+                <div class="img-container">
+                    <div class="privacy-notice">🔒 Privacy Blur Active</div>
+                    <img src="image_5b5ccc.png" alt="Trust Folder Check" class="tutorial-img privacy-blur">
+                    <p class="img-caption">Figure 8: Site safety inspection. Since this is the clean empty plot we just created on D:, confidently press Enter to select <strong>"Yes, I trust this folder"</strong>.</p>
+                </div>
+                <p><strong>Final step:</strong> You'll be given a URL to log in and authorize Claude. Make sure you have API credits — that's the budget that pays your master architect to work!</p>
+            </div>
+        </details>
+
+        <h2 id="en-mindset">🧠 Part 4: Core Mindset: Best Practices & Pitfalls</h2>
+        <table class="ai-table">
+            <tr>
+                <th>Principle</th>
+                <th>❌ Rookie Mistake</th>
+                <th>✅ Smart Owner Approach</th>
+            </tr>
+            <tr>
+                <td><strong>Blueprints Must Be Specific</strong></td>
+                <td>"Build me a house." (Too vague — the architect has no idea where to start.)</td>
+                <td>"Act as a senior architect. Design a 2-storey house: ground floor open-plan kitchen and living room with south-facing floor-to-ceiling windows. 3 bedrooms upstairs, master with en-suite. Off-white exterior walls."</td>
+            </tr>
+            <tr>
+                <td><strong>Build Phase by Phase</strong></td>
+                <td>Expecting the architect to deliver a fully furnished house in one day.</td>
+                <td>"Phase 1: draw the structural floor plan. Once I approve it, Phase 2: add the electrical and plumbing layout. Then Phase 3: interior design."</td>
+            </tr>
+            <tr>
+                <td><strong>One Site at a Time</strong></td>
+                <td>Asking Claude to redesign the garden immediately after finishing the bedroom blueprint.</td>
+                <td>Type <code>/clear</code> to wipe the drafting table clean between unrelated projects — prevents old plans bleeding into new ones.</td>
+            </tr>
+        </table>
+
+        <h2 id="en-ai-tools">🤖 Part 5: AI Tool Matrix (Pick the Right Weapon)</h2>
+        <table class="ai-table">
+            <tr>
+                <th>Tool & Persona</th>
+                <th>Best For...</th>
+                <th>Target Audience</th>
+            </tr>
+            <tr>
+                <td>
+                    <span class="badge bg-claude">Claude Code</span><br>
+                    <strong>👨‍🔧 On-site Contractor</strong>
+                </td>
+                <td>Building apps from scratch locally, editing local files, reading whole code folders.</td>
+                <td>GMs or beginners wanting to build actual software locally.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="badge bg-gemini">Gemini AI (Me)</span><br>
+                    <strong>👔 Marketing Director</strong>
+                </td>
+                <td>Brainstorming livestream strategies, analyzing PDFs, real-time market research.</td>
+                <td>Management needing strategy, writing, and commercial insights.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="badge bg-chatgpt">ChatGPT</span><br>
+                    <strong>💼 The General Consultant</strong>
+                </td>
+                <td>Explaining rules, translating supplier emails, debugging pasted code snippets.</td>
+                <td>General users for daily office tasks and learning.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="badge bg-deepseek">DeepSeek AI</span><br>
+                    <strong>🧮 Tactical Analyst</strong>
+                </td>
+                <td>Extreme logical reasoning, math, high-tier code generation at low cost.</td>
+                <td>Users needing strict logic or cost-effective API access.</td>
+            </tr>
+        </table>
+
+        <h2 id="en-github">🌐 Part 6: How to Publish & Share Online (GitHub Pages)</h2>
+        <div class="metaphor">
+            Building the house locally is great, but nobody can visit. GitHub Pages acts as a free road and signboard — giving your guide a live URL anyone can open in their browser.
+        </div>
+
+        <details open>
+            <summary>Step 1: Preparation (Two Critical Rules!)</summary>
+            <div class="details-content">
+                <div class="alert">
+                    <strong>⚠️ Rule 1: You need an index.html file</strong><br>
+                    GitHub's web server only recognizes one specific filename as the homepage: <code>index.html</code>. If your main file has any other name, visitors will see a blank page or a file listing instead of your guide.<br><br>
+                    Good news: you already have an <code>index.html</code> file that auto-redirects to the guide — just upload it alongside everything else.
+                </div>
+                <div class="alert">
+                    <strong>⚠️ Rule 2: Images must be uploaded together with the HTML</strong><br>
+                    All image files (<code>image_5b5c6f.png</code>, etc.) must be uploaded into the <strong>same folder level</strong> as the HTML file. If you only upload the HTML, all images will appear broken on the live site.
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>Step 2: Create a GitHub Account (skip if you have one)</summary>
+            <div class="details-content">
+                <ol>
+                    <li>Go to <strong>github.com</strong> and click <strong>Sign up</strong> in the top right.</li>
+                    <li>Enter your email, choose a password and username, then complete the verification.</li>
+                    <li>The whole process takes about 3 minutes and is completely free.</li>
+                </ol>
+            </div>
+        </details>
+
+        <details open>
+            <summary>Step 3: Create a New Repository (your website's storage space)</summary>
+            <div class="details-content">
+                <ol>
+                    <li>Once logged in, click the <strong>➕ plus icon</strong> top right and select <strong>New repository</strong>.</li>
+                    <li>In the <strong>Repository name</strong> field, type a name — e.g., <code>claudecodeinstallguide</code> (letters, numbers, and hyphens only).</li>
+                    <li><strong>Critical:</strong> Set visibility to <strong>Public</strong>. If you choose Private, your friends cannot access the link.</li>
+                    <li>Click the green <strong>Create repository</strong> button.</li>
+                </ol>
+                <div class="alert">
+                    <strong>💡 Your repository name becomes part of your URL!</strong><br>
+                    A repo named <code>claudecodeinstallguide</code> gives you the link:<br>
+                    <code>https://your-username.github.io/claudecodeinstallguide/</code>
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>Step 4: Upload All Files</summary>
+            <div class="details-content">
+                <ol>
+                    <li>After creating the repo, look for the blue link that says <strong>"uploading an existing file"</strong> and click it.</li>
+                    <li>Open your <code>D:\claudeai</code> folder, select <strong>all</strong> of these files:
+                        <ul>
+                            <li><code>index.html</code></li>
+                            <li><code>claude_code_guide_v2.html</code></li>
+                            <li>All 8 image files (<code>image_5b5c6f.png</code>, etc.)</li>
+                            <li><code>README.md</code> (optional — shows as a description on the repo page)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Drag all selected files together</strong> into the dotted upload area in the browser.</li>
+                    <li>Wait for all files to finish uploading (may take 1–2 minutes).</li>
+                    <li>Scroll to the bottom of the page and click the green <strong>Commit changes</strong> button to save everything to the cloud.</li>
+                </ol>
+                <div class="img-container">
+                    <img src="image_8f855a.png" alt="Repository after upload" class="tutorial-img">
+                    <p class="img-caption">Figure 9: After uploading, your repository will show all your files listed. Once confirmed, click Commit changes to save everything to the cloud.</p>
+                </div>
+                <div class="img-container">
+                    <img src="image_github4.png" alt="Private repo warning" class="tutorial-img">
+                    <p class="img-caption">⚠️ Warning: If your repository shows <strong>Private</strong>, your friends cannot access the link. Make sure to set it to <strong>Public</strong> when creating it.</p>
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>Step 5: Enable GitHub Pages & Get Your Shareable Link</summary>
+            <div class="details-content">
+                <ol>
+                    <li>Go back to your repository's main page and click the <strong>Settings</strong> tab at the top.</li>
+                    <li>On the left sidebar, scroll down and click <strong>Pages</strong>.</li>
+                    <li>Under <strong>Build and deployment</strong> → <strong>Branch</strong>, change the dropdown from "None" to <strong>main</strong>, keep the folder as <strong>/ (root)</strong>, then click <strong>Save</strong>.</li>
+                    <li>Wait about <strong>1–2 minutes</strong>, then refresh the page.</li>
+                    <li>A green banner will appear at the top saying <strong>"Your site is live at..."</strong> followed by your unique URL.</li>
+                </ol>
+                <div class="img-container">
+                    <img src="image_github3.png" alt="Repo must be public for Pages" class="tutorial-img">
+                    <p class="img-caption">⚠️ If you see this upgrade screen, your repository is private and GitHub Pages cannot be enabled. Go back to repository Settings and change visibility to Public to fix this.</p>
+                </div>
+                <div class="img-container">
+                    <img src="image_901023.png" alt="GitHub Pages Live" class="tutorial-img">
+                    <p class="img-caption">Figure 10: The blue box showing "Your site is live at https://skyisthelimit111.github.io/claudecodeinstallguide/" means your site is online. Copy that link and send it to your friends!</p>
+                </div>
+                <div class="alert" style="background:#eafaf1; border-color: #27ae60;">
+                    <strong>✅ Done! How to share the link:</strong><br>
+                    Copy the live URL and send it via WeChat, SMS, or email. Your friend needs no apps or downloads — they just open it in any browser on their phone or computer!
+                </div>
+            </div>
+        </details>
+
+    <hr style="margin: 50px 0; border: 2px solid var(--secondary);">
 
     <div id="zh-version">
         <h1>🚀 零基础安装与精通 Claude Code 终极指南</h1>
@@ -362,288 +644,6 @@
         </details>
 
     </div>
-
-    <hr style="margin: 50px 0; border: 2px solid var(--secondary);">
-
-    <div id="en-version">
-        <h1>🚀 Ultimate Zero-to-Hero Claude Code Mastery Guide</h1>
-        <p style="text-align: center; color: #7f8fa6;">Designed for non-technical users, E-commerce GMs, and absolute beginners.</p>
-
-        <nav>
-            <h2 style="margin-top: 0;">📑 Quick Navigation</h2>
-            <ul>
-                <li><a href="#en-prep">⏱️ 0. Pre-flight Checklist</a></li>
-                <li><a href="#en-install">🛠️ 1. Core Installation (With Screenshots)</a></li>
-                <li><a href="#en-errors">⚠️ 2. Troubleshooting Common Errors</a></li>
-                <li><a href="#en-firstuse">🎉 3. First-time Setup & Authorization</a></li>
-                <li><a href="#en-mindset">🧠 4. Core Mindset: Best Practices & Pitfalls</a></li>
-                <li><a href="#en-ai-tools">🤖 5. AI Tool Matrix (Choosing the right tool)</a></li>
-                <li><a href="#en-github">🌐 6. Publish & Share Online (GitHub Pages)</a></li>
-            </ul>
-        </nav>
-
-        <h2 id="en-install">🛠️ Part 1: Breaking Ground (Installation)</h2>
-        <p><em>Metaphor: Building a house — first we pour the concrete foundation (Git), then hire the site foreman (Node.js), and finally bring in the master architect (Claude) to start designing your project.</em></p>
-
-        <details>
-            <summary>Step 1 & 2: Install Git and Node.js</summary>
-            <div class="details-content">
-                <div class="img-container">
-                    <img src="image_5b5c6f.png" alt="Git Download Page" class="tutorial-img">
-                    <p class="img-caption">Figure 1: Download Git — pouring the concrete foundation every project stands on.</p>
-                </div>
-                <div class="img-container">
-                    <img src="image_5b5c8a.png" alt="Node Installation Complete" class="tutorial-img">
-                    <p class="img-caption">Figure 2: Node.js (the Site Foreman) is ready — the crew can now receive and execute instructions.</p>
-                </div>
-            </div>
-        </details>
-
-        <details>
-            <summary>Step 3: Bring in the Master Architect (Run Installation Command)</summary>
-            <div class="details-content">
-                <p>Open <code>Git Bash</code>, paste the following and hit Enter:<br>
-                <span class="code-block">npm install -g @anthropic-ai/claude-code</span></p>
-                <div class="img-container">
-                    <div class="privacy-notice">🔒 Privacy Blur Active</div>
-                    <img src="image_5b5cac.png" alt="Claude Installation Success" class="tutorial-img privacy-blur">
-                    <p class="img-caption">Figure 3: ⭐ The architect has arrived! Green text means Claude is installed on-site. Note the <code>Location</code> path — that's the architect's office address, needed in the next step.</p>
-                </div>
-            </div>
-        </details>
-
-        <h2 id="en-errors">⚠️ Part 2: Troubleshooting Common Errors</h2>
-        <div class="metaphor">
-            Don't panic when you see red text — it's like a building inspector flagging an issue on-site. Each error has a fix. Stay calm, read the message, and follow the steps below.
-        </div>
-
-        <details>
-            <summary>❌ Symptom 1: Red text "CommandNotFoundException"</summary>
-            <div class="details-content">
-                <div class="img-container">
-                    <div class="privacy-notice">🔒 Privacy Blur Active</div>
-                    <img src="image_5b5c51.png" alt="Command Not Found Error" class="tutorial-img privacy-blur">
-                    <p class="img-caption">Figure 4: The building site doesn't know where the architect's office is — PATH not configured.</p>
-                </div>
-                <div class="alert">
-                    <strong>🏗️ Diagnosis: The site crew has no map to the architect's office (PATH not set).</strong><br>
-                    <strong>💡 Fix:</strong> Search Windows for "Environment variables" > Edit Account Variables > Double-click <code>Path</code> > New > Paste the install path (e.g., <code>C:\Users\YourName\.local\bin</code>) > OK. <strong>Critical: Close and reopen the terminal window afterward — like handing the crew an updated site map!</strong>
-                </div>
-            </div>
-        </details>
-
-        <details>
-            <summary>❌ Symptom 2: Stuck on Blue Chocolatey Screen</summary>
-            <div class="details-content">
-                <div class="img-container">
-                    <div class="privacy-notice">🔒 Privacy Blur Active</div>
-                    <img src="image_5b5ca5.png" alt="Chocolatey Background Install" class="tutorial-img privacy-blur">
-                    <p class="img-caption">Figure 5: Underground plumbing installation — heavy background tools being set up.</p>
-                </div>
-                <div class="alert">
-                    <strong>🏗️ Diagnosis: The underground pipes (C++ compiler tools) are stuck in delivery traffic.</strong><br>
-                    <strong>💡 Fix:</strong> This window installs optional deep infrastructure. If it freezes for 10+ minutes or shows <code>RequestCanceled</code>, just click X to close it. Like skipping fancy underfloor heating — the house still stands perfectly without it.
-                </div>
-            </div>
-        </details>
-
-        <h2 id="en-firstuse">🎉 Part 3: Fencing Off Your Build Site (First-time Setup)</h2>
-        <div class="metaphor">
-            Never let the construction crew work in your living room (C: drive)! Always fence off a clean, dedicated plot on your D: drive — keeps the mess contained and the build organized.
-        </div>
-
-        <details open>
-            <summary>1. Fence Off a Dedicated Build Plot (Create Project Folder)</summary>
-            <div class="details-content">
-                <div class="img-container">
-                    <img src="image_5b5ce6.png" alt="Empty Project Folder" class="tutorial-img">
-                    <p class="img-caption">Figure 6: Create an empty folder on D: drive (e.g., <code>D:\claudeai</code>) — like staking out a clean empty plot of land. Right-click inside and select "Open in Terminal".</p>
-                </div>
-            </div>
-        </details>
-
-        <details open>
-            <summary>2. Architect Briefing & Safety Inspection (Startup Checks)</summary>
-            <div class="details-content">
-                <p>Type <code>claude</code> in your new terminal. You will see these two prompts:</p>
-                <div class="img-container">
-                    <img src="image_5b5cc7.png" alt="Theme Selection" class="tutorial-img">
-                    <p class="img-caption">Figure 7: Choose your architect's drafting table style. Press '1' for Dark mode — easiest on the eyes for long design sessions.</p>
-                </div>
-                <div class="img-container">
-                    <div class="privacy-notice">🔒 Privacy Blur Active</div>
-                    <img src="image_5b5ccc.png" alt="Trust Folder Check" class="tutorial-img privacy-blur">
-                    <p class="img-caption">Figure 8: Site safety inspection. Since this is the clean empty plot we just created on D:, confidently press Enter to select <strong>"Yes, I trust this folder"</strong>.</p>
-                </div>
-                <p><strong>Final step:</strong> You'll be given a URL to log in and authorize Claude. Make sure you have API credits — that's the budget that pays your master architect to work!</p>
-            </div>
-        </details>
-
-        <h2 id="en-mindset">🧠 Part 4: Core Mindset: Best Practices & Pitfalls</h2>
-        <table class="ai-table">
-            <tr>
-                <th>Principle</th>
-                <th>❌ Rookie Mistake</th>
-                <th>✅ Smart Owner Approach</th>
-            </tr>
-            <tr>
-                <td><strong>Blueprints Must Be Specific</strong></td>
-                <td>"Build me a house." (Too vague — the architect has no idea where to start.)</td>
-                <td>"Act as a senior architect. Design a 2-storey house: ground floor open-plan kitchen and living room with south-facing floor-to-ceiling windows. 3 bedrooms upstairs, master with en-suite. Off-white exterior walls."</td>
-            </tr>
-            <tr>
-                <td><strong>Build Phase by Phase</strong></td>
-                <td>Expecting the architect to deliver a fully furnished house in one day.</td>
-                <td>"Phase 1: draw the structural floor plan. Once I approve it, Phase 2: add the electrical and plumbing layout. Then Phase 3: interior design."</td>
-            </tr>
-            <tr>
-                <td><strong>One Site at a Time</strong></td>
-                <td>Asking Claude to redesign the garden immediately after finishing the bedroom blueprint.</td>
-                <td>Type <code>/clear</code> to wipe the drafting table clean between unrelated projects — prevents old plans bleeding into new ones.</td>
-            </tr>
-        </table>
-
-        <h2 id="en-ai-tools">🤖 Part 5: AI Tool Matrix (Pick the Right Weapon)</h2>
-        <table class="ai-table">
-            <tr>
-                <th>Tool & Persona</th>
-                <th>Best For...</th>
-                <th>Target Audience</th>
-            </tr>
-            <tr>
-                <td>
-                    <span class="badge bg-claude">Claude Code</span><br>
-                    <strong>👨‍🔧 On-site Contractor</strong>
-                </td>
-                <td>Building apps from scratch locally, editing local files, reading whole code folders.</td>
-                <td>GMs or beginners wanting to build actual software locally.</td>
-            </tr>
-            <tr>
-                <td>
-                    <span class="badge bg-gemini">Gemini AI (Me)</span><br>
-                    <strong>👔 Marketing Director</strong>
-                </td>
-                <td>Brainstorming livestream strategies, analyzing PDFs, real-time market research.</td>
-                <td>Management needing strategy, writing, and commercial insights.</td>
-            </tr>
-            <tr>
-                <td>
-                    <span class="badge bg-chatgpt">ChatGPT</span><br>
-                    <strong>💼 The General Consultant</strong>
-                </td>
-                <td>Explaining rules, translating supplier emails, debugging pasted code snippets.</td>
-                <td>General users for daily office tasks and learning.</td>
-            </tr>
-            <tr>
-                <td>
-                    <span class="badge bg-deepseek">DeepSeek AI</span><br>
-                    <strong>🧮 Tactical Analyst</strong>
-                </td>
-                <td>Extreme logical reasoning, math, high-tier code generation at low cost.</td>
-                <td>Users needing strict logic or cost-effective API access.</td>
-            </tr>
-        </table>
-
-        <h2 id="en-github">🌐 Part 6: How to Publish & Share Online (GitHub Pages)</h2>
-        <div class="metaphor">
-            Building the house locally is great, but nobody can visit. GitHub Pages acts as a free road and signboard — giving your guide a live URL anyone can open in their browser.
-        </div>
-
-        <details open>
-            <summary>Step 1: Preparation (Two Critical Rules!)</summary>
-            <div class="details-content">
-                <div class="alert">
-                    <strong>⚠️ Rule 1: You need an index.html file</strong><br>
-                    GitHub's web server only recognizes one specific filename as the homepage: <code>index.html</code>. If your main file has any other name, visitors will see a blank page or a file listing instead of your guide.<br><br>
-                    Good news: you already have an <code>index.html</code> file that auto-redirects to the guide — just upload it alongside everything else.
-                </div>
-                <div class="alert">
-                    <strong>⚠️ Rule 2: Images must be uploaded together with the HTML</strong><br>
-                    All image files (<code>image_5b5c6f.png</code>, etc.) must be uploaded into the <strong>same folder level</strong> as the HTML file. If you only upload the HTML, all images will appear broken on the live site.
-                </div>
-            </div>
-        </details>
-
-        <details open>
-            <summary>Step 2: Create a GitHub Account (skip if you have one)</summary>
-            <div class="details-content">
-                <ol>
-                    <li>Go to <strong>github.com</strong> and click <strong>Sign up</strong> in the top right.</li>
-                    <li>Enter your email, choose a password and username, then complete the verification.</li>
-                    <li>The whole process takes about 3 minutes and is completely free.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details open>
-            <summary>Step 3: Create a New Repository (your website's storage space)</summary>
-            <div class="details-content">
-                <ol>
-                    <li>Once logged in, click the <strong>➕ plus icon</strong> top right and select <strong>New repository</strong>.</li>
-                    <li>In the <strong>Repository name</strong> field, type a name — e.g., <code>claudecodeinstallguide</code> (letters, numbers, and hyphens only).</li>
-                    <li><strong>Critical:</strong> Set visibility to <strong>Public</strong>. If you choose Private, your friends cannot access the link.</li>
-                    <li>Click the green <strong>Create repository</strong> button.</li>
-                </ol>
-                <div class="alert">
-                    <strong>💡 Your repository name becomes part of your URL!</strong><br>
-                    A repo named <code>claudecodeinstallguide</code> gives you the link:<br>
-                    <code>https://your-username.github.io/claudecodeinstallguide/</code>
-                </div>
-            </div>
-        </details>
-
-        <details open>
-            <summary>Step 4: Upload All Files</summary>
-            <div class="details-content">
-                <ol>
-                    <li>After creating the repo, look for the blue link that says <strong>"uploading an existing file"</strong> and click it.</li>
-                    <li>Open your <code>D:\claudeai</code> folder, select <strong>all</strong> of these files:
-                        <ul>
-                            <li><code>index.html</code></li>
-                            <li><code>claude_code_guide_v2.html</code></li>
-                            <li>All 8 image files (<code>image_5b5c6f.png</code>, etc.)</li>
-                            <li><code>README.md</code> (optional — shows as a description on the repo page)</li>
-                        </ul>
-                    </li>
-                    <li><strong>Drag all selected files together</strong> into the dotted upload area in the browser.</li>
-                    <li>Wait for all files to finish uploading (may take 1–2 minutes).</li>
-                    <li>Scroll to the bottom of the page and click the green <strong>Commit changes</strong> button to save everything to the cloud.</li>
-                </ol>
-                <div class="img-container">
-                    <img src="image_8f855a.png" alt="Repository after upload" class="tutorial-img">
-                    <p class="img-caption">Figure 9: After uploading, your repository will show all your files listed. Once confirmed, click Commit changes to save everything to the cloud.</p>
-                </div>
-                <div class="img-container">
-                    <img src="image_github4.png" alt="Private repo warning" class="tutorial-img">
-                    <p class="img-caption">⚠️ Warning: If your repository shows <strong>Private</strong>, your friends cannot access the link. Make sure to set it to <strong>Public</strong> when creating it.</p>
-                </div>
-            </div>
-        </details>
-
-        <details open>
-            <summary>Step 5: Enable GitHub Pages & Get Your Shareable Link</summary>
-            <div class="details-content">
-                <ol>
-                    <li>Go back to your repository's main page and click the <strong>Settings</strong> tab at the top.</li>
-                    <li>On the left sidebar, scroll down and click <strong>Pages</strong>.</li>
-                    <li>Under <strong>Build and deployment</strong> → <strong>Branch</strong>, change the dropdown from "None" to <strong>main</strong>, keep the folder as <strong>/ (root)</strong>, then click <strong>Save</strong>.</li>
-                    <li>Wait about <strong>1–2 minutes</strong>, then refresh the page.</li>
-                    <li>A green banner will appear at the top saying <strong>"Your site is live at..."</strong> followed by your unique URL.</li>
-                </ol>
-                <div class="img-container">
-                    <img src="image_github3.png" alt="Repo must be public for Pages" class="tutorial-img">
-                    <p class="img-caption">⚠️ If you see this upgrade screen, your repository is private and GitHub Pages cannot be enabled. Go back to repository Settings and change visibility to Public to fix this.</p>
-                </div>
-                <div class="img-container">
-                    <img src="image_901023.png" alt="GitHub Pages Live" class="tutorial-img">
-                    <p class="img-caption">Figure 10: The blue box showing "Your site is live at https://skyisthelimit111.github.io/claudecodeinstallguide/" means your site is online. Copy that link and send it to your friends!</p>
-                </div>
-                <div class="alert" style="background:#eafaf1; border-color: #27ae60;">
-                    <strong>✅ Done! How to share the link:</strong><br>
-                    Copy the live URL and send it via WeChat, SMS, or email. Your friend needs no apps or downloads — they just open it in any browser on their phone or computer!
-                </div>
-            </div>
-        </details>
 
     </div>
 </div>
