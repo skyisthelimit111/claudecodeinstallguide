@@ -7,8 +7,10 @@
 
 A bilingual (Chinese / English) interactive HTML guide that walks complete beginners through installing and using Claude Code — Anthropic's official AI coding assistant CLI.
 
+
 ### Live Demo
-https://skyisthelimit111.github.io/claudecodeinstallguide/
+
+🌐 Click here to view the live website!(https://skyisthelimit111.github.io/claudecodeinstallguide/
 
 ### What's Inside
 
@@ -64,7 +66,7 @@ For personal and educational use.
 
 ### 在线预览
 
-https://skyisthelimit111.github.io/claudecodeinstallguide/
+点击此处访问在线完整教程！](https://skyisthelimit111.github.io/claudecodeinstallguide/
 
 ### 内容概览
 
