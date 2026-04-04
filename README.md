@@ -16,26 +16,28 @@ A bilingual (Chinese / English) interactive HTML guide that walks complete begin
 
 | Section | Content |
 |---|---|
-| What is Claude Code? | Plain-language intro with house-building metaphors |
-| Prerequisites | Node.js, Git, terminal basics |
-| Installation | Step-by-step with screenshots (Windows / Mac / Linux) |
-| First Commands | `claude`, `claude --help`, project trust |
-| Effective Usage | Prompt tips, workflow examples |
-| AI Comparison | Claude Code vs ChatGPT / Gemini / DeepSeek |
-| FAQ | Common errors and fixes |
+| 1. Installation | Step-by-step with screenshots — Git, Node.js, Claude Code |
+| 2. Troubleshooting | CommandNotFoundException, Chocolatey freeze, PATH fix |
+| 3. First-time Setup | Create project folder, trust workspace, authorize account |
+| 4. Core Mindset | Prompt best practices, phase-by-phase workflow, /clear tip |
+| 5. AI Tool Comparison | Claude Code vs ChatGPT / Gemini / DeepSeek |
+| 6. Publish & Share | Upload to GitHub, enable Pages, get a shareable link |
 
 ### Features
 
 - **Bilingual** — toggle between Chinese (ZH) and English (EN) with one click
 - **Interactive accordions** — expand only the sections you need
-- **Annotated screenshots** — sensitive paths redacted
+- **Annotated screenshots** — sensitive paths redacted, 12 images total
 - **Privacy blur** — hover any blurred image to reveal it
 - **Responsive layout** — works on desktop and mobile
+- **GitHub Pages guide** — step-by-step with real screenshots including common pitfalls
 
 ### Files
 
 ```
+index.html                  ← homepage redirect (required for GitHub Pages)
 claude_code_guide_v2.html   ← main guide (open this in browser)
+README.md                   ← this file
 image_5b5c6f.png            ← Git download page
 image_5b5c8a.png            ← Node.js installer finish
 image_5b5cac.png            ← Claude Code install success
@@ -44,6 +46,10 @@ image_5b5ca5.png            ← Chocolatey background install
 image_5b5cc7.png            ← VS Code theme / login
 image_5b5ccc.png            ← Trust folder confirmation
 image_5b5ce6.png            ← File Explorer project folder
+image_8f855a.png            ← GitHub repository after upload
+image_901023.png            ← GitHub Pages live confirmation
+image_github3.png           ← GitHub Pages private repo warning
+image_github4.png           ← Private repository warning
 ```
 
 > All images must stay in the **same folder** as the HTML file.
@@ -72,26 +78,28 @@ For personal and educational use.
 
 | 章节 | 内容 |
 |---|---|
-| Claude Code 是什么？ | 用盖房子比喻轻松理解 AI 编程助手 |
-| 前置准备 | Node.js、Git、终端基础操作 |
-| 安装步骤 | 图文并茂，覆盖 Windows / Mac / Linux |
-| 第一条命令 | `claude`、`claude --help`、项目信任设置 |
-| 高效使用技巧 | 提示词写法、工作流示例 |
-| AI 横向对比 | Claude Code vs ChatGPT / Gemini / DeepSeek |
-| 常见问题解答 | 报错原因与修复方法 |
+| 1. 核心安装 | 图文并茂：Git、Node.js、Claude Code 完整安装流程 |
+| 2. 常见报错急救 | 命令未找到、Chocolatey 卡死、PATH 环境变量修复 |
+| 3. 首次配置 | 创建专属工作文件夹、信任工地、账号授权充值 |
+| 4. 核心心法 | 提示词精准写法、分阶段施工、/clear 清空图板 |
+| 5. AI 工具选型 | Claude Code vs ChatGPT / Gemini / DeepSeek 横向对比 |
+| 6. 发布与分享 | 上传 GitHub、开启 Pages、生成可分享链接 |
 
 ### 功能特点
 
 - **中英双语** — 一键切换中文 / 英文显示
 - **折叠式章节** — 按需展开，不被内容淹没
-- **截图已脱敏** — 所有含个人信息的路径均已打码
+- **截图已脱敏** — 所有含个人信息的路径均已打码，共 12 张图
 - **隐私模糊图片** — 鼠标悬停即可查看原图
 - **响应式布局** — 电脑、手机均可正常浏览
+- **GitHub 发布教程** — 含真实截图及常见坑提示
 
 ### 文件说明
 
 ```
+index.html                  ← 首页跳转文件（GitHub Pages 必须）
 claude_code_guide_v2.html   ← 主指南文件（用浏览器打开）
+README.md                   ← 本说明文件
 image_5b5c6f.png            ← Git 下载页面截图
 image_5b5c8a.png            ← Node.js 安装完成截图
 image_5b5cac.png            ← Claude Code 安装成功截图
@@ -100,6 +108,10 @@ image_5b5ca5.png            ← Chocolatey 后台安装截图
 image_5b5cc7.png            ← VS Code 主题 / 登录截图
 image_5b5ccc.png            ← 信任文件夹确认截图
 image_5b5ce6.png            ← 文件资源管理器截图
+image_8f855a.png            ← GitHub 仓库上传成功截图
+image_901023.png            ← GitHub Pages 上线成功截图
+image_github3.png           ← 私有仓库无法启用 Pages 警示
+image_github4.png           ← Private 仓库状态警示
 ```
 
 > 所有图片文件必须与 HTML 文件放在**同一文件夹**内。
