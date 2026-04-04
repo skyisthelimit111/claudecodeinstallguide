@@ -56,6 +56,10 @@
         .language-switcher a:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
 
         .alert { background: #fdf2e9; border-left: 5px solid var(--danger); padding: 15px; margin: 15px 0; border-radius: 4px; }
+
+        /* Screenshot placeholder for missing images */
+        .img-placeholder { background: #eef2f5; border: 2px dashed #b2bec3; border-radius: 8px; padding: 40px 20px; text-align: center; color: #636e72; font-size: 0.95em; }
+        .img-placeholder strong { display: block; font-size: 1.1em; margin-bottom: 8px; color: #2d3436; }
     </style>
 </head>
 <body>
@@ -79,6 +83,7 @@
                 <li><a href="#zh-firstuse">🎉 3. 首次开播配置 (环境搭建与授权)</a></li>
                 <li><a href="#zh-mindset">🧠 4. 核心心法：如何驾驭 Claude (总经理必修课)</a></li>
                 <li><a href="#zh-ai-tools">🤖 5. 主流 AI 工具选型地图</a></li>
+                <li><a href="#zh-github">🌐 6. 如何发布并生成网页链接发给朋友</a></li>
             </ul>
         </nav>
 
@@ -253,6 +258,109 @@
             </tr>
         </table>
 
+        <h2 id="zh-github">🌐 第六部分：如何发布并生成网页链接发给朋友 (GitHub Pages)</h2>
+        <div class="metaphor">
+            房子在本地盖得再好，别人也看不见。我们需要通过 GitHub 修一条路、挂个门牌号，让朋友们通过手机浏览器就能直接参观。
+        </div>
+
+        <details open>
+            <summary>步骤 1：准备工作 (两项致命注意事项！)</summary>
+            <div class="details-content">
+                <div class="alert">
+                    <strong>⚠️ 注意事项 1：必须有 index.html 文件</strong><br>
+                    GitHub 网站服务只认识一个固定的"首页"文件名，叫做 <code>index.html</code>。如果你上传的文件叫其他名字（比如 <code>claude_code_guide_v2.html</code>），朋友打开你的链接只会看到一片空白或文件列表。<br><br>
+                    好消息：你已经有了一个 <code>index.html</code> 文件（自动跳转到你的指南），直接上传它即可。
+                </div>
+                <div class="alert">
+                    <strong>⚠️ 注意事项 2：图片和 HTML 必须在同一个文件夹</strong><br>
+                    上传时，你的所有图片文件（<code>image_5b5c6f.png</code> 等）必须和 HTML 文件一起上传，放在<strong>同一层级</strong>。<br>
+                    不能只上传 HTML 文件，否则图片会全部裂开显示不出来。
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>步骤 2：注册 GitHub 账号（已有账号跳过）</summary>
+            <div class="details-content">
+                <ol>
+                    <li>打开浏览器，访问 <strong>github.com</strong>，点击右上角 <strong>Sign up（注册）</strong>。</li>
+                    <li>填写邮箱、密码、用户名，完成验证后登录。</li>
+                    <li>整个注册过程约 3 分钟，全程免费。</li>
+                </ol>
+            </div>
+        </details>
+
+        <details open>
+            <summary>步骤 3：新建仓库（你的网站储存空间）</summary>
+            <div class="details-content">
+                <ol>
+                    <li>登录后，点击右上角的 <strong>➕ 加号</strong>，选择 <strong>New repository（新建仓库）</strong>。</li>
+                    <li>在 <strong>Repository name（仓库名称）</strong> 框里填入名字，例如：<code>claudecodeinstallguide</code>（只能用英文字母、数字和横线）。</li>
+                    <li><strong>重要：</strong> 必须选择 <strong>Public（公开）</strong>，不能选 Private（私有），否则朋友无法访问。</li>
+                    <li>点击绿色按钮 <strong>Create repository（创建仓库）</strong>。</li>
+                </ol>
+                <div class="alert">
+                    <strong>💡 仓库名会成为你链接的一部分！</strong><br>
+                    例如仓库名叫 <code>claudecodeinstallguide</code>，你的最终链接就是：<br>
+                    <code>https://你的用户名.github.io/claudecodeinstallguide/</code>
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>步骤 4：上传所有文件</summary>
+            <div class="details-content">
+                <ol>
+                    <li>创建仓库后，页面上会出现一行蓝色文字 <strong>"uploading an existing file（上传已有文件）"</strong>，点击它。</li>
+                    <li>打开你电脑的 <code>D:\claudeai</code> 文件夹，<strong>全选</strong>以下文件：
+                        <ul>
+                            <li><code>index.html</code></li>
+                            <li><code>claude_code_guide_v2.html</code></li>
+                            <li>全部 8 张图片（<code>image_5b5c6f.png</code> 等）</li>
+                            <li><code>README.md</code>（可选，显示在仓库首页的说明文字）</li>
+                        </ul>
+                    </li>
+                    <li>把选中的文件<strong>一起拖进浏览器窗口</strong>的虚线框内。</li>
+                    <li>等待上传完成（文件较多可能需要 1-2 分钟）。</li>
+                    <li>上传完成后，页面底部会出现一个绿色按钮，点击 <strong>Commit changes（保存提交）</strong>。</li>
+                </ol>
+                <div class="img-container">
+                    <img src="image_8f855a.png" alt="Repository after upload" class="tutorial-img">
+                    <p class="img-caption">图9：上传成功后，仓库文件列表会显示你所有已上传的文件。确认文件齐全后，点击 Commit changes 保存即完成。</p>
+                </div>
+                <div class="img-container">
+                    <img src="image_github4.png" alt="Private repo warning" class="tutorial-img">
+                    <p class="img-caption">⚠️ 注意：如果你的仓库显示 <strong>Private（私有）</strong>，朋友将无法访问链接。必须在创建时选择 Public（公开）。</p>
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>步骤 5：开启网页服务并获取你的专属链接</summary>
+            <div class="details-content">
+                <ol>
+                    <li>回到仓库主页，点击顶部菜单栏的 <strong>Settings（设置）</strong> 齿轮图标。</li>
+                    <li>在左侧菜单往下滑，找到并点击 <strong>Pages</strong>。</li>
+                    <li>在 <strong>Build and deployment（构建与部署）</strong> 区域，找到 <strong>Branch（分支）</strong> 下拉菜单。</li>
+                    <li>把下拉菜单从 "None" 改成 <strong>main</strong>，右边选 <strong>/ (root)</strong>，然后点击 <strong>Save（保存）</strong>。</li>
+                    <li>耐心等待约 <strong>1-2 分钟</strong>，然后刷新这个页面。</li>
+                    <li>页面顶部会出现一个蓝色/绿色提示框，显示 <strong>"Your site is live at..."</strong>，后面跟着你的专属链接。</li>
+                </ol>
+                <div class="img-container">
+                    <img src="image_github3.png" alt="Repo must be public for Pages" class="tutorial-img">
+                    <p class="img-caption">⚠️ 如果看到这个升级提示，说明你的仓库是私有的，GitHub Pages 无法启用。回到仓库设置把可见性改为 Public 即可解决。</p>
+                </div>
+                <div class="img-container">
+                    <img src="image_901023.png" alt="GitHub Pages Live" class="tutorial-img">
+                    <p class="img-caption">图10：出现蓝色方框显示 "Your site is live at https://skyisthelimit111.github.io/claudecodeinstallguide/"，大功告成！复制这个链接发给朋友即可。</p>
+                </div>
+                <div class="alert" style="background:#eafaf1; border-color: #27ae60;">
+                    <strong>✅ 大功告成！把链接发给朋友的方式：</strong><br>
+                    直接复制这个链接，通过微信、短信、邮件发给朋友。朋友无需安装任何软件，用手机或电脑浏览器打开就能查看完整教程！
+                </div>
+            </div>
+        </details>
+
     </div>
 
     <hr style="margin: 50px 0; border: 2px solid var(--secondary);">
@@ -270,6 +378,7 @@
                 <li><a href="#en-firstuse">🎉 3. First-time Setup & Authorization</a></li>
                 <li><a href="#en-mindset">🧠 4. Core Mindset: Best Practices & Pitfalls</a></li>
                 <li><a href="#en-ai-tools">🤖 5. AI Tool Matrix (Choosing the right tool)</a></li>
+                <li><a href="#en-github">🌐 6. Publish & Share Online (GitHub Pages)</a></li>
             </ul>
         </nav>
 
@@ -434,6 +543,107 @@
                 <td>Users needing strict logic or cost-effective API access.</td>
             </tr>
         </table>
+
+        <h2 id="en-github">🌐 Part 6: How to Publish & Share Online (GitHub Pages)</h2>
+        <div class="metaphor">
+            Building the house locally is great, but nobody can visit. GitHub Pages acts as a free road and signboard — giving your guide a live URL anyone can open in their browser.
+        </div>
+
+        <details open>
+            <summary>Step 1: Preparation (Two Critical Rules!)</summary>
+            <div class="details-content">
+                <div class="alert">
+                    <strong>⚠️ Rule 1: You need an index.html file</strong><br>
+                    GitHub's web server only recognizes one specific filename as the homepage: <code>index.html</code>. If your main file has any other name, visitors will see a blank page or a file listing instead of your guide.<br><br>
+                    Good news: you already have an <code>index.html</code> file that auto-redirects to the guide — just upload it alongside everything else.
+                </div>
+                <div class="alert">
+                    <strong>⚠️ Rule 2: Images must be uploaded together with the HTML</strong><br>
+                    All image files (<code>image_5b5c6f.png</code>, etc.) must be uploaded into the <strong>same folder level</strong> as the HTML file. If you only upload the HTML, all images will appear broken on the live site.
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>Step 2: Create a GitHub Account (skip if you have one)</summary>
+            <div class="details-content">
+                <ol>
+                    <li>Go to <strong>github.com</strong> and click <strong>Sign up</strong> in the top right.</li>
+                    <li>Enter your email, choose a password and username, then complete the verification.</li>
+                    <li>The whole process takes about 3 minutes and is completely free.</li>
+                </ol>
+            </div>
+        </details>
+
+        <details open>
+            <summary>Step 3: Create a New Repository (your website's storage space)</summary>
+            <div class="details-content">
+                <ol>
+                    <li>Once logged in, click the <strong>➕ plus icon</strong> top right and select <strong>New repository</strong>.</li>
+                    <li>In the <strong>Repository name</strong> field, type a name — e.g., <code>claudecodeinstallguide</code> (letters, numbers, and hyphens only).</li>
+                    <li><strong>Critical:</strong> Set visibility to <strong>Public</strong>. If you choose Private, your friends cannot access the link.</li>
+                    <li>Click the green <strong>Create repository</strong> button.</li>
+                </ol>
+                <div class="alert">
+                    <strong>💡 Your repository name becomes part of your URL!</strong><br>
+                    A repo named <code>claudecodeinstallguide</code> gives you the link:<br>
+                    <code>https://your-username.github.io/claudecodeinstallguide/</code>
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>Step 4: Upload All Files</summary>
+            <div class="details-content">
+                <ol>
+                    <li>After creating the repo, look for the blue link that says <strong>"uploading an existing file"</strong> and click it.</li>
+                    <li>Open your <code>D:\claudeai</code> folder, select <strong>all</strong> of these files:
+                        <ul>
+                            <li><code>index.html</code></li>
+                            <li><code>claude_code_guide_v2.html</code></li>
+                            <li>All 8 image files (<code>image_5b5c6f.png</code>, etc.)</li>
+                            <li><code>README.md</code> (optional — shows as a description on the repo page)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Drag all selected files together</strong> into the dotted upload area in the browser.</li>
+                    <li>Wait for all files to finish uploading (may take 1–2 minutes).</li>
+                    <li>Scroll to the bottom of the page and click the green <strong>Commit changes</strong> button to save everything to the cloud.</li>
+                </ol>
+                <div class="img-container">
+                    <img src="image_8f855a.png" alt="Repository after upload" class="tutorial-img">
+                    <p class="img-caption">Figure 9: After uploading, your repository will show all your files listed. Once confirmed, click Commit changes to save everything to the cloud.</p>
+                </div>
+                <div class="img-container">
+                    <img src="image_github4.png" alt="Private repo warning" class="tutorial-img">
+                    <p class="img-caption">⚠️ Warning: If your repository shows <strong>Private</strong>, your friends cannot access the link. Make sure to set it to <strong>Public</strong> when creating it.</p>
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>Step 5: Enable GitHub Pages & Get Your Shareable Link</summary>
+            <div class="details-content">
+                <ol>
+                    <li>Go back to your repository's main page and click the <strong>Settings</strong> tab at the top.</li>
+                    <li>On the left sidebar, scroll down and click <strong>Pages</strong>.</li>
+                    <li>Under <strong>Build and deployment</strong> → <strong>Branch</strong>, change the dropdown from "None" to <strong>main</strong>, keep the folder as <strong>/ (root)</strong>, then click <strong>Save</strong>.</li>
+                    <li>Wait about <strong>1–2 minutes</strong>, then refresh the page.</li>
+                    <li>A green banner will appear at the top saying <strong>"Your site is live at..."</strong> followed by your unique URL.</li>
+                </ol>
+                <div class="img-container">
+                    <img src="image_github3.png" alt="Repo must be public for Pages" class="tutorial-img">
+                    <p class="img-caption">⚠️ If you see this upgrade screen, your repository is private and GitHub Pages cannot be enabled. Go back to repository Settings and change visibility to Public to fix this.</p>
+                </div>
+                <div class="img-container">
+                    <img src="image_901023.png" alt="GitHub Pages Live" class="tutorial-img">
+                    <p class="img-caption">Figure 10: The blue box showing "Your site is live at https://skyisthelimit111.github.io/claudecodeinstallguide/" means your site is online. Copy that link and send it to your friends!</p>
+                </div>
+                <div class="alert" style="background:#eafaf1; border-color: #27ae60;">
+                    <strong>✅ Done! How to share the link:</strong><br>
+                    Copy the live URL and send it via WeChat, SMS, or email. Your friend needs no apps or downloads — they just open it in any browser on their phone or computer!
+                </div>
+            </div>
+        </details>
 
     </div>
 </div>
