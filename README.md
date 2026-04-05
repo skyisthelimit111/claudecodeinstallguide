@@ -15,7 +15,6 @@ A bilingual (Chinese / English) interactive HTML guide that walks complete begin
 
 | Section | Content |
 |---|---|
-| ⚡ Quick Overview | 5-step summary for impatient readers |
 | 1. Installation | Step-by-step with screenshots — Git, Node.js, Claude Code |
 | 2. Troubleshooting | CommandNotFoundException, Chocolatey freeze, PATH fix |
 | 3. First-time Setup | Create project folder, trust workspace, authorize account |
@@ -26,7 +25,6 @@ A bilingual (Chinese / English) interactive HTML guide that walks complete begin
 ### Features
 
 - **Bilingual** — toggle between Chinese (ZH) and English (EN) with one click
-- **Quick Overview** — 5-step card layout for impatient readers at the top of each version
 - **Interactive accordions** — expand only the sections you need
 - **Annotated screenshots** — sensitive paths redacted, 12 images total
 - **Privacy blur** — hover any blurred image to reveal it
@@ -82,7 +80,6 @@ For personal and educational use.
 
 | 章节 | 内容 |
 |---|---|
-| ⚡ 极速概览 | 5步速览，专为没耐心的读者 |
 | 1. 核心安装 | 图文并茂：Git、Node.js、Claude Code 完整安装流程 |
 | 2. 常见报错急救 | 命令未找到、Chocolatey 卡死、PATH 环境变量修复 |
 | 3. 首次配置 | 创建专属工作文件夹、信任工地、账号授权充值 |
@@ -93,7 +90,6 @@ For personal and educational use.
 ### 功能特点
 
 - **中英双语** — 一键切换中文 / 英文显示
-- **极速概览** — 页面顶部 5 步卡片，专为没耐心的读者设计
 - **折叠式章节** — 按需展开，不被内容淹没
 - **截图已脱敏** — 所有含个人信息的路径均已打码，共 12 张图
 - **隐私模糊图片** — 鼠标悬停即可查看原图
