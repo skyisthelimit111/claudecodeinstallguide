@@ -7,7 +7,6 @@
 
 A bilingual (Chinese / English) interactive HTML guide that walks complete beginners through installing and using Claude Code — Anthropic's official AI coding assistant CLI.
 
-
 ### Live Demo
 
 [🌐 Click here to view the live website!](https://skyisthelimit111.github.io/claudecodeinstallguide/)
@@ -16,6 +15,7 @@ A bilingual (Chinese / English) interactive HTML guide that walks complete begin
 
 | Section | Content |
 |---|---|
+| ⚡ Quick Overview | 5-step summary for impatient readers |
 | 1. Installation | Step-by-step with screenshots — Git, Node.js, Claude Code |
 | 2. Troubleshooting | CommandNotFoundException, Chocolatey freeze, PATH fix |
 | 3. First-time Setup | Create project folder, trust workspace, authorize account |
@@ -26,33 +26,37 @@ A bilingual (Chinese / English) interactive HTML guide that walks complete begin
 ### Features
 
 - **Bilingual** — toggle between Chinese (ZH) and English (EN) with one click
+- **Quick Overview** — 5-step card layout for impatient readers at the top of each version
 - **Interactive accordions** — expand only the sections you need
 - **Annotated screenshots** — sensitive paths redacted, 12 images total
 - **Privacy blur** — hover any blurred image to reveal it
 - **Responsive layout** — works on desktop and mobile
+- **Ship Wheel Navigation** — mobile-only rotating wheel to jump between chapters; drag to reposition
+- **Background music** — AI-composed lo-fi track loops in the background; toggle on/off with 🎵 button
 - **GitHub Pages guide** — step-by-step with real screenshots including common pitfalls
 
 ### Files
 
 ```
-index.html                  ← homepage redirect (required for GitHub Pages)
-claude_code_guide_v2.html   ← main guide (open this in browser)
-README.md                   ← this file
-image_5b5c6f.png            ← Git download page
-image_5b5c8a.png            ← Node.js installer finish
-image_5b5cac.png            ← Claude Code install success
-image_5b5c51.png            ← CommandNotFound error example
-image_5b5ca5.png            ← Chocolatey background install
-image_5b5cc7.png            ← VS Code theme / login
-image_5b5ccc.png            ← Trust folder confirmation
-image_5b5ce6.png            ← File Explorer project folder
-image_8f855a.png            ← GitHub repository after upload
-image_901023.png            ← GitHub Pages live confirmation
-image_github3.png           ← GitHub Pages private repo warning
-image_github4.png           ← Private repository warning
+index.html                    ← homepage (required for GitHub Pages)
+claude_code_guide_v2.html     ← main guide (open this in browser)
+README.md                     ← this file
+Ride That Good Vibe.mp3       ← background music (AI-composed, loops on mobile)
+image_5b5c6f.png              ← Git download page
+image_5b5c8a.png              ← Node.js installer finish
+image_5b5cac.png              ← Claude Code install success
+image_5b5c51.png              ← CommandNotFound error example
+image_5b5ca5.png              ← Chocolatey background install
+image_5b5cc7.png              ← VS Code theme / login
+image_5b5ccc.png              ← Trust folder confirmation
+image_5b5ce6.png              ← File Explorer project folder
+image_8f855a.png              ← GitHub repository after upload
+image_901023.png              ← GitHub Pages live confirmation
+image_github3.png             ← GitHub Pages private repo warning
+image_github4.png             ← Private repository warning
 ```
 
-> All images must stay in the **same folder** as the HTML file.
+> All images and the MP3 file must stay in the **same folder** as the HTML file.
 
 ### How to View Locally
 
@@ -78,6 +82,7 @@ For personal and educational use.
 
 | 章节 | 内容 |
 |---|---|
+| ⚡ 极速概览 | 5步速览，专为没耐心的读者 |
 | 1. 核心安装 | 图文并茂：Git、Node.js、Claude Code 完整安装流程 |
 | 2. 常见报错急救 | 命令未找到、Chocolatey 卡死、PATH 环境变量修复 |
 | 3. 首次配置 | 创建专属工作文件夹、信任工地、账号授权充值 |
@@ -88,33 +93,37 @@ For personal and educational use.
 ### 功能特点
 
 - **中英双语** — 一键切换中文 / 英文显示
+- **极速概览** — 页面顶部 5 步卡片，专为没耐心的读者设计
 - **折叠式章节** — 按需展开，不被内容淹没
 - **截图已脱敏** — 所有含个人信息的路径均已打码，共 12 张图
 - **隐私模糊图片** — 鼠标悬停即可查看原图
 - **响应式布局** — 电脑、手机均可正常浏览
+- **船舵导航（手机专用）** — 旋转船舵跳转章节，可长按拖动到任意位置
+- **背景音乐** — AI 创作轻音乐循环播放，🎵 按钮一键开关
 - **GitHub 发布教程** — 含真实截图及常见坑提示
 
 ### 文件说明
 
 ```
-index.html                  ← 首页跳转文件（GitHub Pages 必须）
-claude_code_guide_v2.html   ← 主指南文件（用浏览器打开）
-README.md                   ← 本说明文件
-image_5b5c6f.png            ← Git 下载页面截图
-image_5b5c8a.png            ← Node.js 安装完成截图
-image_5b5cac.png            ← Claude Code 安装成功截图
-image_5b5c51.png            ← 命令未找到报错示例
-image_5b5ca5.png            ← Chocolatey 后台安装截图
-image_5b5cc7.png            ← VS Code 主题 / 登录截图
-image_5b5ccc.png            ← 信任文件夹确认截图
-image_5b5ce6.png            ← 文件资源管理器截图
-image_8f855a.png            ← GitHub 仓库上传成功截图
-image_901023.png            ← GitHub Pages 上线成功截图
-image_github3.png           ← 私有仓库无法启用 Pages 警示
-image_github4.png           ← Private 仓库状态警示
+index.html                    ← 首页文件（GitHub Pages 必须）
+claude_code_guide_v2.html     ← 主指南文件（用浏览器打开）
+README.md                     ← 本说明文件
+Ride That Good Vibe.mp3       ← 背景音乐（AI 创作，手机端循环播放）
+image_5b5c6f.png              ← Git 下载页面截图
+image_5b5c8a.png              ← Node.js 安装完成截图
+image_5b5cac.png              ← Claude Code 安装成功截图
+image_5b5c51.png              ← 命令未找到报错示例
+image_5b5ca5.png              ← Chocolatey 后台安装截图
+image_5b5cc7.png              ← VS Code 主题 / 登录截图
+image_5b5ccc.png              ← 信任文件夹确认截图
+image_5b5ce6.png              ← 文件资源管理器截图
+image_8f855a.png              ← GitHub 仓库上传成功截图
+image_901023.png              ← GitHub Pages 上线成功截图
+image_github3.png             ← 私有仓库无法启用 Pages 警示
+image_github4.png             ← Private 仓库状态警示
 ```
 
-> 所有图片文件必须与 HTML 文件放在**同一文件夹**内。
+> 所有图片和 MP3 文件必须与 HTML 文件放在**同一文件夹**内。
 
 ### 本地查看方法
 
