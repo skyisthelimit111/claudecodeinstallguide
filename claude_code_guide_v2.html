@@ -88,7 +88,7 @@
                 cursor: pointer; transition: all 0.2s;
             }
             .wbtn.active { background: #e67e22; color: #fff; border-color: #e67e22; }
-            #wheel-sound-btn {
+            #wheel-sound-btn, #wheel-music-btn {
                 background: rgba(44,62,80,0.88);
                 border: 1px solid rgba(255,255,255,0.2);
                 border-radius: 10px; color: rgba(255,255,255,0.6);
@@ -96,6 +96,7 @@
                 transition: all 0.2s; line-height: 1;
             }
             #wheel-sound-btn.on { background: #27ae60; color: #fff; border-color: #27ae60; }
+            #wheel-music-btn.on { background: #8e44ad; color: #fff; border-color: #8e44ad; }
             /* The wheel SVG */
             #wheel-svg {
                 width: 84px; height: 84px; cursor: grab;
@@ -718,20 +719,24 @@
     </div>
 </div>
 
+<!-- ── Background Music ──────────────────────────────────────── -->
+<audio id="bg-music" src="Ride That Good Vibe.mp3" loop preload="auto"></audio>
+
 <!-- ── Ship Wheel Navigation ─────────────────────────────────── -->
 <div id="wheel-label-box"></div>
 
 <div id="wheel-nav">
     <!-- Drag handle: prominent orange, clear instruction -->
     <div id="wheel-drag-handle">
-        ✥ 长按拖动<br>移动舵盘
+        ✥ 长按拖动<br>Long Press To Move Around
     </div>
 
     <!-- Language + Sound toggle -->
     <div id="wheel-top-row">
         <button class="wbtn active" id="wbtn-en" onclick="wheelLang('en')">🇺🇸 EN</button>
         <button class="wbtn"        id="wbtn-zh" onclick="wheelLang('zh')">🇨🇳 中</button>
-        <button id="wheel-sound-btn" class="on" onclick="wheelToggleSound()" title="声效开关">🔊</button>
+        <button id="wheel-sound-btn" class="on" onclick="wheelToggleSound()" title="点击音效">🔊</button>
+        <button id="wheel-music-btn" onclick="wheelToggleMusic()" title="背景音乐">🎵</button>
     </div>
 
     <!--
@@ -840,13 +845,32 @@ function playClick(){
   if(!soundOn) return;
   try{
     if(!actx) actx=new(window.AudioContext||window.webkitAudioContext)();
-    var len=Math.floor(actx.sampleRate*0.055);
-    var buf=actx.createBuffer(1,len,actx.sampleRate);
-    var d=buf.getChannelData(0);
-    for(var i=0;i<len;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/len,5)*0.45;
-    var src=actx.createBufferSource(); src.buffer=buf;
-    var g=actx.createGain(); g.gain.value=0.4;
-    src.connect(g); g.connect(actx.destination); src.start();
+    var t=actx.currentTime;
+
+    /* 808-style sub bass thump: drops from 160Hz → 55Hz */
+    var sub=actx.createOscillator(), subG=actx.createGain();
+    sub.type='sine';
+    sub.frequency.setValueAtTime(160,t);
+    sub.frequency.exponentialRampToValueAtTime(55,t+0.18);
+    subG.gain.setValueAtTime(0.55,t);
+    subG.gain.exponentialRampToValueAtTime(0.001,t+0.22);
+    sub.connect(subG); subG.connect(actx.destination);
+    sub.start(t); sub.stop(t+0.22);
+
+    /* Bright ascending arpeggio: C5→E5→G5→C6 (major chord, positive energy) */
+    [523,659,784,1047].forEach(function(freq,i){
+      var osc=actx.createOscillator(), g=actx.createGain();
+      osc.type= i<2 ? 'triangle' : 'sine';
+      osc.frequency.value=freq;
+      /* slight detune for warmth */
+      osc.detune.value=(i%2===0)?3:-3;
+      var s=t+i*0.058;
+      g.gain.setValueAtTime(0.0,s);
+      g.gain.linearRampToValueAtTime(0.22,s+0.018);
+      g.gain.exponentialRampToValueAtTime(0.001,s+0.32);
+      osc.connect(g); g.connect(actx.destination);
+      osc.start(s); osc.stop(s+0.35);
+    });
   }catch(e){}
 }
 
@@ -970,6 +994,32 @@ window.wheelLang=function(l){
   document.getElementById('wbtn-zh').className=l==='zh'?'wbtn active':'wbtn';
   setAngle(0,true); go(0,true);
 };
+
+/* ── Background Music ── */
+var bgMusic=document.getElementById('bg-music');
+var musicOn=false;
+bgMusic.volume=0.35;
+
+window.wheelToggleMusic=function(){
+  var btn=document.getElementById('wheel-music-btn');
+  if(bgMusic.paused){
+    bgMusic.play().catch(function(){});
+    musicOn=true; btn.className='on'; btn.textContent='🎵';
+  } else {
+    bgMusic.pause();
+    musicOn=false; btn.className=''; btn.textContent='🔇';
+  }
+};
+
+/* Auto-start on first touch (browser autoplay policy) */
+document.addEventListener('touchstart',function(){
+  if(!musicOn){
+    bgMusic.play().then(function(){
+      musicOn=true;
+      document.getElementById('wheel-music-btn').className='on';
+    }).catch(function(){});
+  }
+},{once:true});
 
 /* Init */
 updateHandles(0);
